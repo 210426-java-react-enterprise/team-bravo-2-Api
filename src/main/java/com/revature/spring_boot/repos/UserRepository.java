@@ -1,6 +1,6 @@
-package com.revature.repos;
+package com.revature.spring_boot.repos;
 
-import com.revature.models.User;
+import com.revature.spring_boot.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.revature.controllers;
+package com.revature.spring_boot.controllers;
 
 import org.springframework.stereotype.Controller;
 

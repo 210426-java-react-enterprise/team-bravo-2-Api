@@ -1,6 +1,5 @@
-package com.revature.dtos;
+package com.revature.spring_boot.dtos;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 public class Credentials {
 
