@@ -7,12 +7,21 @@ spring:
   h2:
     console:
       enabled: true
-      path: /postgres
-  datasource:
+      path: /h2
     url:
     driver-class-name:
     username:
     password:
+
+  logging:
+    level:
+      org:
+        hibernate: INFO
+        SQL: DEBUG
+        cache: DEBUG
+        stat:
+          DEBUG
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
@@ -25,10 +34,3 @@ management:
       exposure:
         include: "*"
 
-logging:
-  level:
-    org:
-      hibernate: INFO
-      SQL: DEBUG
-      cache: DEBUG
-      stat: DEBUG
