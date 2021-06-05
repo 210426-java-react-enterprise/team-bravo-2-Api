@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.revature</groupId>
-    <artifactId>spring-boot-demo</artifactId>
+    <artifactId>team-bravo-spring-boot</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
