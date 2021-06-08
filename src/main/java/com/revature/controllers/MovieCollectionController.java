@@ -4,18 +4,19 @@ import com.revature.daos.MovieCollectionDAO;
 import com.revature.pojo.Movie;
 import com.revature.pojo.MovieCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.net.URI;
 
 import static org.springframework.http.MediaType.*;
 
 //https://www.geeksforgeeks.org/how-to-create-a-rest-api-using-java-spring-boot/
 
+/**
+ * The Controller
+ */
 @RestController
-@RequestMapping(path = "/moviecollection")
+//@RequestMapping(path = "/moviecollection")
 public class MovieCollectionController {
 
     private final MovieCollectionDAO movieCollectionDAO;
@@ -30,6 +31,24 @@ public class MovieCollectionController {
     public MovieCollection getMovieCollection(){
         return movieCollectionDAO.getAllMovies();
     }
+
+
+    // Implementing a GET method, to get a movie from user's collection
+    /*@GetMapping(produces = APPLICATION_JSON_VALUE)
+    public Movie getMovieByID(int id){
+        return movieCollectionDAO.getMovie(id);
+    }*/
+    @GetMapping("/getMovie_id/{id}")
+    public ResponseEntity<Movie> getMovieByID(@PathVariable int id){
+        return new ResponseEntity<>(movieCollectionDAO.getMovieByID(id), HttpStatus.OK);
+    }
+
+
+    @GetMapping("/getMovie_title/{title}")
+    public ResponseEntity<Movie> getMovieByTitle(@PathVariable String title){
+        return new ResponseEntity<>(movieCollectionDAO.getMovieByTitle(title), HttpStatus.OK);
+    }
+
 
     //implementing a POST method, to add a movie to user's collection
     @PostMapping(produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
@@ -58,5 +77,8 @@ public class MovieCollectionController {
         movieCollectionDAO.deleteMovieFromCollection(movie);
         return movieCollectionDAO.getAllMovies();
     }
+
+
+
 
 }

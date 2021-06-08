@@ -5,8 +5,13 @@ import com.revature.pojo.MovieCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+/**
+ * The Service, to be mocked in testing.
+ */
 @Repository
+@Service
 public class MovieCollectionDAO {
 
     private static MovieCollectionDAO instance;
@@ -58,5 +63,11 @@ public class MovieCollectionDAO {
     public MovieCollection getAllMovies(){
         return movieCollection;
     }
+
+
+    public Movie getMovieByID(int id){return movieCollection.getMovieByID(id);}
+
+
+    public Movie getMovieByTitle(String title){return movieCollection.getMovieByTitle(title);}
 
 }

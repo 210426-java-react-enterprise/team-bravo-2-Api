@@ -4,16 +4,19 @@ import com.revature.controllers.MovieCollectionController;
 import com.revature.daos.MovieCollectionDAO;
 import com.revature.pojo.Movie;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 class BootAppTests {
 
+	@Autowired
 	private static MovieCollectionController movieCollectionController;
+
+	@Autowired
 	private static MovieCollectionDAO movieCollectionDAO;
 
 	public static void setUp(){
@@ -26,9 +29,9 @@ class BootAppTests {
 		movieCollectionController = null;
 	}
 
-	@Test
+	/*@Test
 	void contextLoads() {
-	}
+	}*/
 
 	@Test
 	public void addMovieTest(){
