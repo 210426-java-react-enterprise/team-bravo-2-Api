@@ -1,41 +1,47 @@
 package com.revature.pojo;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
 @Entity
+@Table(name = "movies")
 public class Movie {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true, name = "movie_id")
     private int id;//serial, primary key; not the same as IMDB key
 
     @Column(nullable = false)
+    @NotNull
     private String title;
 
     @Column(nullable = false)
+    @NotNull
     private int year;
 
-    @Column(nullable = true)//can this be null?
-    private String rated;//Not Rated, G, PG, PG-13, R, NC-17, X
+    @Column(nullable = false, name = "mpaa_rating")
+    @NotNull
+    private String rated;//NR, G, PG, PG-13, R, NC-17, X
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "length_min")
+    @NotNull
     private int runtime;//in minutes
 
-    @Column(nullable = true)
+    @Column(nullable = false)
+    @NotNull
     private String genre;//could be more than 1 genre
 
-    @Column(nullable = true)
+    @Column(nullable = false)
+    @NotNull
     private String plot;
 
-    @Column(nullable = true)
+    @Column(nullable = false, name = "prod_company")
+    @NotNull
     private String production;
 
     private boolean forSale;

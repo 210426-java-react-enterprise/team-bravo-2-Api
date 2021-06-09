@@ -3,6 +3,8 @@ package com.revature.controllers;
 import com.revature.daos.MovieCollectionDAO;
 import com.revature.pojo.Movie;
 import com.revature.pojo.MovieCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +15,15 @@ import static org.springframework.http.MediaType.*;
 //https://www.geeksforgeeks.org/how-to-create-a-rest-api-using-java-spring-boot/
 
 /**
- * The Controller
+ * The Controller creates end points.
  */
 @RestController
-//@RequestMapping(path = "/moviecollection")
+@RequestMapping(path = "/movie")
 public class MovieCollectionController {
 
     private final MovieCollectionDAO movieCollectionDAO;
+
+    private Logger logger = LoggerFactory.getLogger(MovieCollectionController.class);
 
     @Autowired
     public MovieCollectionController(MovieCollectionDAO movieCollectionDAO){
@@ -27,24 +31,21 @@ public class MovieCollectionController {
     }
 
     // Implementing a GET method, to get the user's movie collection
-    @GetMapping(produces = APPLICATION_JSON_VALUE)
+    @GetMapping(produces = APPLICATION_JSON_VALUE, value = "/getAll")
     public MovieCollection getMovieCollection(){
         return movieCollectionDAO.getAllMovies();
     }
 
 
     // Implementing a GET method, to get a movie from user's collection
-    /*@GetMapping(produces = APPLICATION_JSON_VALUE)
-    public Movie getMovieByID(int id){
-        return movieCollectionDAO.getMovie(id);
-    }*/
-    @GetMapping("/getMovie_id/{id}")
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
+    //@GetMapping("/getMovie_id/{id}")
     public ResponseEntity<Movie> getMovieByID(@PathVariable int id){
         return new ResponseEntity<>(movieCollectionDAO.getMovieByID(id), HttpStatus.OK);
     }
 
-
-    @GetMapping("/getMovie_title/{title}")
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
+    //@GetMapping("/getMovie_title/{title}")
     public ResponseEntity<Movie> getMovieByTitle(@PathVariable String title){
         return new ResponseEntity<>(movieCollectionDAO.getMovieByTitle(title), HttpStatus.OK);
     }
