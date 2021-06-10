@@ -12,14 +12,12 @@ const handleLoginSubmit = async (event) => {
     loginData.username = username.value;
     loginData.password = password.value;
 
-    console.log(username.value, password.value);
-    userAPI.loginUser(loginData);
+
+    let user = await userAPI.loginUser(loginData);
+    sessionStorage.setItem("authUser", JSON.stringify(user));
+    console.log(user);
+
 }
-
-
-
-
-
 
 
 //document.querySelectorAll('input').forEach(element => element.addEventListener("input"));
