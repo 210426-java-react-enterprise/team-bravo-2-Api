@@ -6,6 +6,14 @@ const collectionTypeName = document.getElementById('collection-type-name');
 const collectionTypeSubmit = document.getElementById("collection-type-submit");
 const shouldNavigateAway = false;
 
+//Dynamic dropmenu load
+const typeDropdown = async () => {
+
+    let typesObj = collectionAPI.getCollectionTypes();
+    console.log(typesObj);
+}
+typeDropdown();
+
 const handleCollectionTypeSubmit = async (event) => {
     event.preventDefault();
 
