@@ -4,8 +4,6 @@ const collectionTypeDesc = document.getElementById("collection-type-description"
 const collectionTypeName = document.getElementById('collection-type-name');
 
 const collectionTypeSubmit = document.getElementById("collection-type-submit");
-
-
 const shouldNavigateAway = false;
 
 const handleCollectionTypeSubmit = async (event) => {
@@ -20,6 +18,7 @@ const handleCollectionTypeSubmit = async (event) => {
 
     console.log(collectionTypeData);
     collectionAPI.addCollection(collectionTypeData);
+
 }
 
 const validateInputs = () => {
