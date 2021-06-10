@@ -12,7 +12,10 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="../css/collectionStyle.css" />
+    <link rel="stylesheet" href="../css/collection.css" />
+    <link rel="stylesheet" href="../css/item.css" />
+    <link rel="stylesheet" href="../css/search.css" />
+
     <!-- JavaScript for Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -81,70 +84,105 @@
       </div>
     </div>
 
-    <!-- ADD COLLECTIN ITEM FORM -->
-
-    <!-- 
-     
-     -->
-    <div class="container collection">
+    <!-- 3RD PARTY SEARCH ITEM -->
+    <div class="container container-itme-search">
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-          <form id="collection-form">
+          <form id="collection-search-form">
+            <div class="collection-form-title">
+              <h1>Search for an Item</h1>
+            </div>
+            <div class="form-group">
+              <label for="collectionItemSearch"></label>
+              <input
+                type="input"
+                class="form-control"
+                id="collectionItemSearch"
+                aria-describedby="emailHelp"
+                placeholder="Search:"
+              />
+            </div>
+
+            <div class="collection-form-buttons">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-secondary">Clear</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+
+    <!-- ADD COLLECTIN ITEM FORM -->
+
+    <div class="container container-collection-item">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <form id="collection-item-form">
             <div class="collection-form-title">
               <h1>Add Collection Item</h1>
             </div>
-            <select class="form-control">
-              <option disabled selected>Select a Collection Type</option>
-              <option>Movies</option>
-              <option>Vinyl</option>
-              <option>Books</option>
-            </select>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address:</label>
-              <input
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-              />
-              <small id="emailHelp" class="form-text text-muted"
-                >We'll never share your email with anyone else.</small
-              >
+            <div class="item-check-boxes">
+              <div class="form-group form-check">
+                <label class="form-check-label" for="collectionItemOwned"
+                  >Owned:</label
+                >
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="collectionItemOwned"
+                />
+              </div>
+
+              <div class="form-group form-check">
+                <label class="form-check-label" for="collectionItemWatched"
+                  >Watched:</label
+                >
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="collectionItemWatched"
+                />
+              </div>
+
+              <div class="form-group form-check">
+                <label class="form-check-label" for="collectionItemTradeable"
+                  >Trade:</label
+                >
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="collectionItemTradeable"
+                />
+              </div>
             </div>
+
             <div class="form-group">
-              <label for="exampleInputPassword1">Password:</label>
+              <label for="formControlRange">Rating:</label>
               <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                class="form-control-range"
+                id="formControlRange"
               />
             </div>
+
             <div class="form-group">
-              <label for="exampleFormControlTextarea1"
-                >Collection Description:</label
-              >
+              <label for="collectionItemUserComment">Item Description:</label>
               <textarea
                 class="form-control"
-                id="exampleFormControlTextarea1"
+                id="collectionItemUserComment"
                 rows="3"
               ></textarea>
             </div>
-            <div class="form-group form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="exampleCheck1"
-              />
-              <label class="form-check-label" for="exampleCheck1"
-                >Check me out</label
-              >
-            </div>
+
             <div class="collection-form-buttons">
               <button type="submit" class="btn btn-primary">Submit</button>
-              <button type="reset" class="btn btn-primary">Clear</button>
+              <button type="reset" class="btn btn-secondary">Clear</button>
             </div>
           </form>
         </div>
