@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS for Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="../css/register.css" />
+    <!-- JavaScript for Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <title>Register/Login</title>
+</head>
+
+<body>
+    <!-- 
+        firstName input
+        lastName input
+        usernmae input
+        password input
+        email input
+        age drop down
+       -->
+    <div class="container container-register">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form id="register-form">
+                    <div class="register-form-title">
+                        <h2>Register</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerFirstName" id="">First Name:</label>
+                        <input type="input" class="form-control" id="registerFirstName" placeholder="First Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="registerLastName">Last Name</label>
+                        <input type="input" class="form-control" id="registerLastName" placeholder="Last Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email Address:</label>
+                        <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp"
+                            placeholder="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="registerUsername">Username:</label>
+                        <input type="input" class="form-control" id="registerUsername" placeholder="Username" />
+
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" class="form-control" id="registerPassword" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="registerAge">Age:</label>
+                        <input type="number" class="form-control" id="registerAge" placeholder="Age" />
+
+                        <div class="register-form-buttons">
+                            <button disabled type="submit" class="btn btn-primary submit" id="registerSubmit">
+                                Submit
+                            </button>
+                            <button type="reset" class="btn btn-secondary clear">
+                                Clear
+                            </button>
+                        </div>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+
+    <script src="../API/UserAPI.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+
+</html>
