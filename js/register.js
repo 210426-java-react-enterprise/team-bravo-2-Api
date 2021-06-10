@@ -13,10 +13,10 @@ const handleRegisterSubmit = async (event) => {
 
     registerData.firstName = firstName.value.trim();
     registerData.lastName = lastName.value.trim();
+    registerData.age = age.value.trim();
+    registerData.email = email.value.trim();
     registerData.username = username.value.trim();
     registerData.password = password.value.trim();
-    registerData.email = email.value.trim();
-    registerData.age = age.value.trim();
 
     console.log(registerData)
     UserAPI.register(registerData);
