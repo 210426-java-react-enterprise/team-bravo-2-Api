@@ -2,7 +2,6 @@ const collectionAPI = {
 
     localURL: 'http://localhost:5000',
 
-
     getCollectionTypes: async () => {
 
         let res;
@@ -22,7 +21,7 @@ const collectionAPI = {
         // let res;
 
 
-        
+
 
         // let res;
 

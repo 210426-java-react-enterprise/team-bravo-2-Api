@@ -12,7 +12,9 @@ const typeDropdown = async () => {
 
     let typesObj = await collectionAPI.getCollectionTypes();
     sessionStorage.setItem('collectionTypes', JSON.stringify(typesObj))
+
     let dropdownType = document.getElementById('collection-type')
+
     for (type of typesObj) {
         let option = document.createElement('option');
         option.textContent = type.mediumType;
@@ -26,7 +28,7 @@ console.log(JSON.parse(sessionStorage.collectionTypes))
 
 const handleCollectionTypeSubmit = async (event) => {
     event.preventDefault();
-    
+
     let collectionTypeData = {};
 
     //needs validated

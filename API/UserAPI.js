@@ -1,38 +1,38 @@
-const URL = 'http://localhost:5000';
 
-function getTest(){
+const userAPI = {
 
+    apiURL: 'http://localhost:5000',
 
-    
-  // fetch(`${URL}/accounts/test`)
- //    .then((res) => res.json())
-    // .then((res) => JSON.parse(res))
- //    .then((data) => console.log(data));
-//    // .catch(error => console.log(error))
-   
- }
- getTest();
-
-function loginUser(data){
-    fetch(`${URL}/accounts/login`, {
-        method: 'POST',
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then((res) => res.json())
-    .then((data) => console.log(data));
-}
+    getTest: () => {
 
 
-    localURL: 'http://localhost:5000',
+
+        // fetch(`${URL}/accounts/test`)
+        //    .then((res) => res.json())
+        // .then((res) => JSON.parse(res))
+        //    .then((data) => console.log(data));
+        //    // .catch(error => console.log(error))
+
+    },
+
+    loginUser: (data) => {
+
+        fetch(`${UserAPI.apiURL}/accounts/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+    },
 
     register: async (data) => {
 
         let res;
         try {
-            res = await fetch(`${UserAPI.localURL}/accounts/register`, {
+            res = await fetch(`${UserAPI.apiURL}/accounts/register`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" }
@@ -42,10 +42,11 @@ function loginUser(data){
         }
 
         const json = await res.json();
-        console.log(json)
-
-
+        return json;
     }
-
 }
+
+
+
+
 

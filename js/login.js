@@ -4,7 +4,7 @@ const submit = document.getElementById("submit");
 
 
 
-const handleLoginSubmit = async(event) => {
+const handleLoginSubmit = async (event) => {
     event.preventDefault();
 
     let loginData = {};
@@ -13,8 +13,8 @@ const handleLoginSubmit = async(event) => {
     loginData.password = password.value;
 
     console.log(username.value, password.value);
-    loginUser(loginData);
-} 
+    userAPI.loginUser(loginData);
+}
 
 
 
@@ -24,7 +24,7 @@ const handleLoginSubmit = async(event) => {
 
 //document.querySelectorAll('input').forEach(element => element.addEventListener("input"));
 
-submit.addEventListener('click', function(event) {
-    
+submit.addEventListener('click', function (event) {
+
     handleLoginSubmit(event);
 })
