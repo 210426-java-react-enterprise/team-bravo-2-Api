@@ -13,7 +13,6 @@ const collectionAPI = {
             console.log(error);
         }
         let json = await res.json();
-        console.log(json);
         return json;
 
     },

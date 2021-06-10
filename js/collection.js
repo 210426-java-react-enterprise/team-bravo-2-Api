@@ -1,3 +1,4 @@
+
 ///COLLECTION TYPE FORM INPUTS
 const collectionType = document.getElementById('collection-type');
 const collectionTypeDesc = document.getElementById("collection-type-description");
@@ -9,8 +10,15 @@ const shouldNavigateAway = false;
 //Dynamic dropmenu load
 const typeDropdown = async () => {
 
-    let typesObj = collectionAPI.getCollectionTypes();
-    console.log(typesObj);
+    let typesObj = await collectionAPI.getCollectionTypes();
+    let dropdownType = document.getElementById('collection-type')
+    for (type of typesObj) {
+        let option = document.createElement('option');
+        option.textContent = type.mediumType;
+        dropdownType.append(option);
+
+    }
+
 }
 typeDropdown();
 
