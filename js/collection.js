@@ -8,7 +8,7 @@ const shouldNavigateAway = false;
 
 const handleCollectionTypeSubmit = async (event) => {
     event.preventDefault();
-
+    
     let collectionTypeData = {};
 
     //needs validated
@@ -18,7 +18,6 @@ const handleCollectionTypeSubmit = async (event) => {
 
     console.log(collectionTypeData);
     collectionAPI.addCollection(collectionTypeData);
-
 
 }
 
@@ -34,6 +33,7 @@ const validateInputs = () => {
 //EVENT LISTENERS
 
 document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
+
 collectionTypeSubmit.addEventListener('click', function (event) {
     // shouldNavigateAway;
     handleCollectionTypeSubmit(event);

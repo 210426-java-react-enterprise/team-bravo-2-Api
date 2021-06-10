@@ -1,8 +1,11 @@
 const collectionAPI = {
 
     addCollection: async (data) => {
-
         console.log(data);
+        // let res;
+
+
+        
 
         // let res;
 
@@ -15,6 +18,7 @@ const collectionAPI = {
         // } catch (error) {
         //     console.log(error)
         // }
+
 
         // const json = await res.json();
         // return json;
