@@ -16,9 +16,7 @@ const typeDropdown = async () => {
         let option = document.createElement('option');
         option.textContent = type.mediumType;
         dropdownType.append(option);
-
     }
-
 }
 typeDropdown();
 
