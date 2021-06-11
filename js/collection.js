@@ -28,12 +28,35 @@ const collectionInit = () => {
     const handleCollectionTypeSubmit = async (event) => {
         event.preventDefault();
 
-        let collectionTypeData = {};
+        let user = JSON.parse(sessionStorage.authUser);
+        let collectionTypes = JSON.parse(sessionStorage.collectionTypes);
+
+        let mediumId;
+        for (const [key, value] of Object.entries(collectionTypes)) {
+            console.log(value.id)
+            if (value.mediumType === collectionType.value) {
+                mediumId = value.id;
+            }
+        }
+
+        let collectionTypeData = {
+            "account": {
+                "id": user.id,
+                "username": user.username,
+                "email": user.email
+            },
+            "collType": {
+                "id": mediumId,
+                "mediumType": collectionType.value
+            },
+            "collectionName": collectionTypeName.value.trim(),
+            "collectionDescrip": collectionTypeDesc.value
+        };
 
         //needs validated
-        collectionTypeData.type = collectionType.value;
-        collectionTypeData.name = collectionTypeName.value.trim();
-        collectionTypeData.desc = collectionTypeDesc.value;
+        // collectionTypeData.type = collectionType.value;
+        // collectionTypeData.name = collectionTypeName.value.trim();
+        // collectionTypeData.desc = collectionTypeDesc.value;
 
         console.log(collectionTypeData);
         collectionAPI.addCollection(collectionTypeData);
