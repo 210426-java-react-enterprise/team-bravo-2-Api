@@ -57,6 +57,20 @@ const collectionAPI = {
                 "collectionName": "test collection",
                 "collectionDescrip": "test"
             }
+
+            {  
+    "account": {
+        "id": 3,
+        "username": "jackjack",
+        "email": "jack@dog.com"
+        },
+    "collType": {
+        "id": 1,
+        "mediumType": "movies"
+        },
+    "collectionName": "test collection",
+    "collectionDescrip": "test"
+}
         */
     },
 
