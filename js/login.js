@@ -3,6 +3,10 @@ const initLogin = () => {
     const password = document.getElementById("password");
     const submit = document.getElementById("loginSubmit");
     const loginContainer = document.getElementById('loginContainer');
+    const collectionTypeContainer = document.getElementById('collectionTypeContainer');
+    const landingContainer = document.getElementById('landingContainer');
+
+
 
 
 
@@ -16,8 +20,18 @@ const initLogin = () => {
 
 
         let user = await userAPI.loginUser(loginData);
-        sessionStorage.setItem("authUser", JSON.stringify(user));
-        loginContainer.classList.add('d-none')
+
+        if (user.status === 500) {
+            alert("You entered invalid credentials.")
+        }
+        if (user.id) {
+
+            sessionStorage.setItem("authUser", JSON.stringify(user));
+
+            loginContainer.classList.add('d-none')
+            collectionTypeContainer.classList.remove('d-none');
+        }
+
     }
 
     const validateInputs = () => {
@@ -34,7 +48,6 @@ const initLogin = () => {
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 
     submit.addEventListener('click', function (event) {
-
         handleLoginSubmit(event);
     })
 }

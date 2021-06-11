@@ -7,6 +7,10 @@ const initRegister = () => {
     const age = document.getElementById('registerAge');
     const submit = document.getElementById('registerSubmit');
 
+    const registerContainer = document.getElementById('registerContainer');
+    const loginContainer = document.getElementById('loginContainer');
+
+
     const handleRegisterSubmit = async (event) => {
         event.preventDefault();
 
@@ -20,7 +24,9 @@ const initRegister = () => {
         registerData.password = password.value.trim();
 
         console.log(registerData)
-        userAPI.register(registerData);
+        await userAPI.register(registerData);
+        registerContainer.classList.add('d-none');
+        loginContainer.classList.remove('d-none');
     }
 
     const validateInputs = () => {
