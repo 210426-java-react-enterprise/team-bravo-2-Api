@@ -52,15 +52,7 @@ const collectionInit = () => {
             "collectionName": collectionTypeName.value.trim(),
             "collectionDescrip": collectionTypeDesc.value
         };
-
-        //needs validated
-        // collectionTypeData.type = collectionType.value;
-        // collectionTypeData.name = collectionTypeName.value.trim();
-        // collectionTypeData.desc = collectionTypeDesc.value;
-
-        console.log(collectionTypeData);
         collectionAPI.addCollection(collectionTypeData);
-
     }
 
     const validateInputs = () => {
