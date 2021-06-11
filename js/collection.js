@@ -24,7 +24,6 @@ const typeDropdown = async () => {
     return typesObj;
 }
 typeDropdown();
-console.log(JSON.parse(sessionStorage.collectionTypes))
 
 const handleCollectionTypeSubmit = async (event) => {
     event.preventDefault();

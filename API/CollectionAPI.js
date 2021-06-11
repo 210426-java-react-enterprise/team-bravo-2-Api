@@ -7,7 +7,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collection/type/getAll`);
+            res = await fetch(`${collectionAPI.localURL}/collectionType/getAll`);
         } catch (error) {
             console.log(error);
         }
