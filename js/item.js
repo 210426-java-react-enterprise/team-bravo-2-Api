@@ -46,18 +46,12 @@ const handleCollectionItemSubmit = async (event) => {
 
 const validateInputs = () => {
     let isValid = true;
-    //add form after document
-    //may be done by checkboxes, if not will continue with rest.
+    
     var itemOwned = collectionItemOwned.value; 
     var userRating = collectionItemUserRating.value;
-    var 
-
-
-    if(itemOwned === isValid){
-         return 1;
-    } else if((!itemOwned) === isValid){
-        return 0;
-    }
+    var userComment = collectionItemUserComment.value;
+    var usertradeable = collectionItemTradeable.value;
+    
 
     isValid ? collectionTypeSubmit.removeAttribute('disabled') : collectionTypeSubmit.setAttribute('disabled', true);
 
@@ -69,7 +63,19 @@ const validateInputs = () => {
 
 }
 
+// type="checkbox"
+//                   class="form-check-input"
+//                   id="collectionItemOwned"
 
+function validateFunction(){
+    var checkbox = collectionItemOwned;
+
+    if(checkbox.checked == true){
+        return 1;
+    } else {
+        return 0;
+    }
+}
 
 //EVENT LISTENERS
 
