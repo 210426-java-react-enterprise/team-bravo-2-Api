@@ -8,7 +8,7 @@ const initLanding = () => {
     const collectionItemContainer = document.getElementById('collectionItemContainer');
     const searchItemContainer = document.getElementById('searchItemContainer');
 
-    // registerContainer.classList.add('d-none');
+    registerContainer.classList.add('d-none');
     loginContainer.classList.add('d-none');
     collectionTypeContainer.classList.add('d-none');
     collectionItemContainer.classList.add('d-none');

@@ -13,8 +13,8 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="../css/login.css" />
     <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="../css/login.css" />
     <link rel="stylesheet" href="../css/collection.css" />
     <link rel="stylesheet" href="../css/item.css" />
     <link rel="stylesheet" href="../css/search.css" />
@@ -28,6 +28,7 @@
 
     <title>Make a Collection</title>
   </head>
+
   <body>
 
     <!-- LANDING CONTAINER -->
@@ -96,55 +97,6 @@
       </div>
     </div>
 
-    <!-- REGISTER CONTAINER -->
-    <div class="container" id="registerContainer">
-      <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-6">
-              <form id="register-form">
-                  <div class="register-form-title">
-                      <h2>Register</h2>
-                  </div>
-                  <div class="form-group">
-                      <label for="registerFirstName" id="">First Name:</label>
-                      <input type="input" class="form-control" id="registerFirstName" placeholder="First Name" />
-                  </div>
-                  <div class="form-group">
-                      <label for="registerLastName">Last Name</label>
-                      <input type="input" class="form-control" id="registerLastName" placeholder="Last Name" />
-                  </div>
-                  <div class="form-group">
-                      <label for="registerEmail">Email Address:</label>
-                      <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp"
-                          placeholder="email" />
-                  </div>
-                  <div class="form-group">
-                      <label for="registerUsername">Username:</label>
-                      <input type="input" class="form-control" id="registerUsername" placeholder="Username" />
-
-                  </div>
-                  <div class="form-group">
-                      <label for="registerPassword">Password</label>
-                      <input type="password" class="form-control" id="registerPassword" placeholder="Password" />
-                  </div>
-                  <div class="form-group">
-                      <label for="registerAge">Age:</label>
-                      <input type="number" class="form-control" id="registerAge" placeholder="Age" />
-
-                      <div class="register-form-buttons">
-                          <button disabled type="submit" class="btn btn-primary submit" id="registerSubmit">
-                              Submit
-                          </button>
-                          <button type="reset" class="btn btn-secondary clear">
-                              Clear
-                          </button>
-                      </div>
-              </form>
-          </div>
-          <div class="col-md-3"></div>
-      </div>
-  </div>
-
   <!-- CREATE COLLECTION FORM -->
   <div class="container" id="collectionTypeContainer">
     <div class="row">
@@ -157,7 +109,7 @@
 
           <select class="form-select" id="collection-type">
             <option disabled selected>Select a Collection Type</option>
-            <option value="movies">Movies</option>
+            <!-- <option value="movies">Movies</option> -->
             <!-- <option value="">Vinyl</option>
             <option>Books</option> -->
           </select>
@@ -319,15 +271,62 @@
       </div>
     </div>
 
-    <script src="../API/CollectionAPI.js"></script>
-    <script src="../js/collection.js"></script>
-    <script src="../js/item.js"></script>
+    <!-- REGISTER CONTAINER -->
+    <div class="container" id="registerContainer">
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+              <form id="register-form">
+                  <div class="register-form-title">
+                      <h2>Register</h2>
+                  </div>
+                  <div class="form-group">
+                      <label for="registerFirstName" id="">First Name:</label>
+                      <input type="input" class="form-control" id="registerFirstName" placeholder="First Name" />
+                  </div>
+                  <div class="form-group">
+                      <label for="registerLastName">Last Name</label>
+                      <input type="input" class="form-control" id="registerLastName" placeholder="Last Name" />
+                  </div>
+                  <div class="form-group">
+                      <label for="registerEmail">Email Address:</label>
+                      <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp"
+                          placeholder="email" />
+                  </div>
+                  <div class="form-group">
+                      <label for="registerUsername">Username:</label>
+                      <input type="input" class="form-control" id="registerUsername" placeholder="Username" />
+
+                  </div>
+                  <div class="form-group">
+                      <label for="registerPassword">Password</label>
+                      <input type="password" class="form-control" id="registerPassword" placeholder="Password" />
+                  </div>
+                  <div class="form-group">
+                      <label for="registerAge">Age:</label>
+                      <input type="number" class="form-control" id="registerAge" placeholder="Age" />
+
+                      <div class="register-form-buttons">
+                          <button disabled type="submit" class="btn btn-primary submit" id="registerSubmit">
+                              Submit
+                          </button>
+                          <button type="reset" class="btn btn-secondary clear">
+                              Clear
+                          </button>
+                      </div>
+              </form>
+          </div>
+          <div class="col-md-3"></div>
+      </div>
+  </div>
 
     <script src="../API/UserAPI.js"></script>
     <script src="../js/register.js"></script>
     <script src="../js/login.js"></script>
     <script src="../js/landing.js"></script>
 
-  
+    <script src="../API/CollectionAPI.js"></script>
+    <script src="../js/collection.js"></script>
+    <script src="../js/item.js"></script>
   </body>
 </html>
