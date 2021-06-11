@@ -64,28 +64,29 @@ const userAPI = {
     },
 
 
-    updateItem: async (data) => {
+    // updateItem: async (data) => {
 
-        let res;
-        try {
-            res = await fetch(`${userAPI.apiURL}/movieCollections/updateById`, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: { "Content-Type": "application/json" }
-            })
-        } catch (err) {
-            console.log(err);
-        }
+    //     let res;
+    //     try {
+    //         res = await fetch(`${userAPI.apiURL}/movieCollections/updateById`, {
+    //             method: 'POST',
+    //             body: JSON.stringify(data),
+    //             headers: { "Content-Type": "application/json" }
+    //         })
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
 
-        const json = await res.json();
-        return json;
-    }
-
-
+    //     const json = await res.json();
+    //     return json;
+    // }
 
 
 
-}
+
+
+
+
 
 
 

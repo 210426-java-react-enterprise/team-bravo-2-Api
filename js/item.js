@@ -28,6 +28,7 @@ const collectionItemTradeable = document.getElementById('collectionItemTradeable
 
 const shouldNavigateAway = false;
 
+console.log(JSON.parse(sessionStorage.collectionTypes))
 const handleCollectionItemSubmit = async (event) => {
     event.preventDefault();
 
@@ -47,13 +48,14 @@ const validateInputs = () => {
     let isValid = true;
     //add form after document
     //may be done by checkboxes, if not will continue with rest.
-    var itemOwned = document.itemOwned.value;   
-    var userRating = document.userRating.value;
+    var itemOwned = collectionItemOwned.value; 
+    var userRating = collectionItemUserRating.value;
+    var 
 
 
     if(itemOwned === isValid){
          return 1;
-    } else if((!collectionItemOwned.value) = isValid){
+    } else if((!itemOwned) === isValid){
         return 0;
     }
 
