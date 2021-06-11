@@ -65,3 +65,7 @@ label {
 label {
   margin-left: 5px;
 }
+
+.d-none {
+  display: none;
+}
