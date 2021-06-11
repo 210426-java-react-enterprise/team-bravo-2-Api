@@ -19,63 +19,51 @@ GET from API
 
 
 //CollectionItem FORM INPUTS
-const collectionItem = document.getElementById('collectionItem')
-const collectionItemOwned = document.getElementById('collectionItemOwned')
-const collectionItemWatched = document.getElementById('collectionItemWatched')
-const collectionItemUserRating = document.getElementById('collectionItemUserRating')
-const collectionItemUserComment = document.getElementById('collectionItemUserComment')
-const collectionItemTradeable = document.getElementById('collectionItemTradeable')
+// const collectionItem = document.getElementById('collectionItem');
+const collectionItemOwned = document.getElementById('collectionItemOwned');
+const collectionItemWatched = document.getElementById('collectionItemWatched');
+const collectionItemUserRating = document.getElementById('collectionItemUserRating');
+const collectionItemUserComment = document.getElementById('collectionItemUserComment');
+const collectionItemTradeable = document.getElementById('collectionItemTradeable');
+const collectionItemSubmit = document.getElementById('collectionItemSubmit');
 
-const shouldNavigateAway = false;
+
+
+
+// const shouldNavigateAway = false;
 
 const handleCollectionItemSubmit = async (event) => {
     event.preventDefault();
 
     let collectionItemData = {};
 
-    collectionItemData.owned = collectionItem.value;
-    collectionItemData.watched = collectionItemWatched.value;
-    collectionItemData.userrating = collectionItemUserRating.value;
-    collectionItemData.usercomment = collectionItemUserComment.value; //must be trim if optional input?
-    collectionItemData.usertradeable = collectionItemTradeable.value;
+    collectionItemData.owned = collectionItemOwned.checked ? collectionItemOwned.value = 1 : collectionItemOwned.value = 0;
+    collectionItemData.watched = collectionItemWatched.checked ? collectionItemWatched.value = 1 : collectionItemOwned.value = 0;
+    collectionItemData.userRating = parseInt(collectionItemUserRating.value);
+    collectionItemData.userComment = collectionItemUserComment.value; //must be trim if optional input?
+    collectionItemData.userTradeable = collectionItemTradeable.checked ? collectionItemTradeable.value = 1 : collectionItemOwned.value = 0;
 
     console.log(collectionItemData);
 }
 
 
-const validateInputs = () => {
+const validateItemInputs = () => {
     let isValid = true;
-    //add form after document
-    //may be done by checkboxes, if not will continue with rest.
-    var itemOwned = document.itemOwned.value;   
-    var userRating = document.userRating.value;
 
+    if (!collectionItemOwned.checked) isValid = false;
+    if (!collectionItemWatched.checked) isValid = false;
 
-    if(itemOwned === isValid){
-         return 1;
-    } else if((!collectionItemOwned.value) = isValid){
-        return 0;
-    }
-
-    isValid ? collectionTypeSubmit.removeAttribute('disabled') : collectionTypeSubmit.setAttribute('disabled', true);
-
-    if(userRating < 1 || userRating > 10 ) {
-        alert("That is not a valid entry.")
-        return false;
-    } return (true);
-
-
+    isValid ? collectionItemSubmit.removeAttribute('disabled') : collectionItemSubmit.setAttribute('disabled', true);
 }
 
 
 
 //EVENT LISTENERS
 
-document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
+document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateItemInputs));
+
 collectionItemSubmit.addEventListener('click', function (event) {
     // shouldNavigateAway;
     handleCollectionItemSubmit(event);
-
-
-})
+});
 

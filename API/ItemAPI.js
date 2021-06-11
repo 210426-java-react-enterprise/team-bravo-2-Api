@@ -44,25 +44,23 @@ const userAPI = {
 
     getItem: async (data) => {
         let res;
-        try{
-            res = await fetch('${userAPI.apiURL}/movieCollections/getById',{
+        try {
+            res = await fetch('${userAPI.apiURL}/movieCollections/getById', {
 
                 method: 'GET',
                 body: JSON.stringify(data),
-                headers: {"Content-Type": "application/json"}
+                headers: { "Content-Type": "application/json" }
 
             })
         } catch (err) {
             console.log(err);
         }
-            
+
         const json = await res.json();
         return json;
-            
-            
-        }
-    },
 
+
+    },
 
     updateItem: async (data) => {
 
@@ -80,10 +78,6 @@ const userAPI = {
         const json = await res.json();
         return json;
     }
-
-
-
-
 
 }
 

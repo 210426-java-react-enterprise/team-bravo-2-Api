@@ -27,9 +27,11 @@ const userAPI = {
                 },
             })
         } catch (error) {
+            // return undefined;
             console.log(error);
         }
         const json = await res.json();
+        console.log(json)
         return json;
 
 

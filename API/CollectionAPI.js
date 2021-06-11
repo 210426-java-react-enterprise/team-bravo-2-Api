@@ -7,7 +7,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collection/type/getAll`);
+            res = await fetch(`${collectionAPI.localURL}/collectionType/getAll`);
         } catch (error) {
             console.log(error);
         }
@@ -18,7 +18,7 @@ const collectionAPI = {
 
     addCollection: async (data) => {
         console.log(data);
-        // let res;
+
 
 
 
@@ -57,6 +57,20 @@ const collectionAPI = {
                 "collectionName": "test collection",
                 "collectionDescrip": "test"
             }
+
+            {  
+    "account": {
+        "id": 3,
+        "username": "jackjack",
+        "email": "jack@dog.com"
+        },
+    "collType": {
+        "id": 1,
+        "mediumType": "movies"
+        },
+    "collectionName": "test collection",
+    "collectionDescrip": "test"
+}
         */
     },
 
