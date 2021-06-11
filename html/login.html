@@ -30,32 +30,6 @@
   </head>
 
   <body>
-
-    <!-- LANDING CONTAINER -->
-    <div class="container" id="landingContainer">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <form id="landing-form">
-            <div class="login-form-title">
-              <h2>Welcome!</h2>
-          </div>
-       
-            <div class="login-form-buttons">
-              <button  type="submit" class="btn btn-primary submit" id="loginButton">
-                  Login
-              </button>
-              <button type="submit" class="btn btn-secondary clear" id='registerButton'>
-                  Register
-              </button>
-          </div>
-          </form>
-        </div>
-        <div class="col-md-3"></div>
-      </div>
-    </div>
-
-
     <!-- LOGIN CONTAINER -->
     <div class="container" id="loginContainer">
       <div class="row">
@@ -64,7 +38,7 @@
           <form id="login-form">
             <div class="login-form-title">
               <h2>Login</h2>
-          </div>
+            </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label"
                 >Username</label
@@ -75,7 +49,6 @@
                 id="username"
                 aria-describedby="emailHelp"
               />
-             
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"
@@ -84,186 +57,17 @@
               <input type="password" class="form-control" id="password" />
             </div>
             <div class="login-form-buttons">
-              <button disabled type="submit" class="btn btn-primary submit" id="loginSubmit">
-                  Submit
-              </button>
-              <button type="reset" class="btn btn-secondary clear">
-                  Clear
-              </button>
-          </div>
-          </form>
-        </div>
-        <div class="col-md-3"></div>
-      </div>
-    </div>
-
-  <!-- CREATE COLLECTION FORM -->
-  <div class="container" id="collectionTypeContainer">
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <form id="collection-type-form">
-          <div class="collection-form-title">
-            <h2>Create a New Collection</h2>
-          </div>
-
-          <select class="form-select" id="collection-type">
-            <option disabled selected>Select a Collection Type</option>
-            <!-- <option value="movies">Movies</option> -->
-            <!-- <option value="">Vinyl</option>
-            <option>Books</option> -->
-          </select>
-
-          <div class="form-group">
-            <label for="exampleInputEmail1">Collection Name:</label>
-            <input
-              type="input"
-              class="form-control"
-              id="collection-type-name"
-              placeholder="Enter Collection Name"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1"
-              >Collection Description:</label
-            >
-            <textarea
-              class="form-control"
-              id="collection-type-description"
-              rows="3"
-            ></textarea>
-          </div>
-
-          <div class="collection-form-buttons">
-            <button
-              disabled
-              type="submit"
-              class="btn btn-primary submit"
-              id="collection-type-submit"
-            >
-              Submit
-            </button>
-            <button type="reset" class="btn btn-secondary clear">
-              Clear
-            </button>
-          </div>
-        </form>
-      </div>
-      <div class="col-md-3"></div>
-    </div>
-  </div>
-
-    <!-- 3RD PARTY SEARCH ITEM -->
-    <div class="container" id="searchItemContainer">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <form id="collection-search-form">
-            <div class="collection-form-title">
-              <h1>Search for an Item</h1>
-            </div>
-            <div class="form-group">
-              <label for="collectionItemSearch"></label>
-              <input
-                type="input"
-                class="form-control"
-                id="collectionItemSearch"
-                aria-describedby="emailHelp"
-                placeholder="Search:"
-              />
-            </div>
-
-            <div class="collection-form-buttons">
-              <button disabled type="submit" class="btn btn-primary">
-                Submit
-              </button>
-              <button type="reset" class="btn btn-secondary">Clear</button>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-3"></div>
-      </div>
-    </div>
-
-     <!-- ADD COLLECTIN ITEM FORM -->
-     <div class="container" id="collectionItemContainer">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <form id="collection-item-form">
-            <div class="collection-form-title">
-              <h1>Add Collection Item</h1>
-            </div>
-            <div class="item-check-boxes">
-              <div class="form-group form-check">
-                <label class="form-check-label" for="collectionItemOwned"
-                  >Owned:</label
-                >
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="collectionItemOwned"
-                />
-              </div>
-
-              <div class="form-group form-check">
-                <label class="form-check-label" for="collectionItemWatched"
-                  >Watched:</label
-                >
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="collectionItemWatched"
-                />
-              </div>
-
-              <div class="form-group form-check">
-                <label class="form-check-label" for="collectionItemTradeable"
-                  >Trade:</label
-                >
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="collectionItemTradeable"
-                />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="collectionItemUserRating">Rating:</label>
-              <select class="form-select" id="collectionItemUserRating">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="collectionItemUserComment">Item Description:</label>
-              <textarea
-                class="form-control"
-                id="collectionItemUserComment"
-                rows="3"
-              ></textarea>
-            </div>
-
-            <div class="collection-form-buttons">
               <button
                 disabled
                 type="submit"
-                class="btn btn-primary"
-                id="collectionItemSubmit"
+                class="btn btn-primary submit"
+                id="loginSubmit"
               >
                 Submit
               </button>
-              <button type="reset" class="btn btn-secondary">Clear</button>
+              <button type="reset" class="btn btn-secondary clear">
+                Clear
+              </button>
             </div>
           </form>
         </div>
@@ -271,62 +75,7 @@
       </div>
     </div>
 
-    <!-- REGISTER CONTAINER -->
-    <div class="container" id="registerContainer">
-      <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-6">
-              <form id="register-form">
-                  <div class="register-form-title">
-                      <h2>Register</h2>
-                  </div>
-                  <div class="form-group">
-                      <label for="registerFirstName" id="">First Name:</label>
-                      <input type="input" class="form-control" id="registerFirstName" placeholder="First Name" />
-                  </div>
-                  <div class="form-group">
-                      <label for="registerLastName">Last Name</label>
-                      <input type="input" class="form-control" id="registerLastName" placeholder="Last Name" />
-                  </div>
-                  <div class="form-group">
-                      <label for="registerEmail">Email Address:</label>
-                      <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp"
-                          placeholder="email" />
-                  </div>
-                  <div class="form-group">
-                      <label for="registerUsername">Username:</label>
-                      <input type="input" class="form-control" id="registerUsername" placeholder="Username" />
-
-                  </div>
-                  <div class="form-group">
-                      <label for="registerPassword">Password</label>
-                      <input type="password" class="form-control" id="registerPassword" placeholder="Password" />
-                  </div>
-                  <div class="form-group">
-                      <label for="registerAge">Age:</label>
-                      <input type="number" class="form-control" id="registerAge" placeholder="Age" />
-
-                      <div class="register-form-buttons">
-                          <button disabled type="submit" class="btn btn-primary submit" id="registerSubmit">
-                              Submit
-                          </button>
-                          <button type="reset" class="btn btn-secondary clear">
-                              Clear
-                          </button>
-                      </div>
-              </form>
-          </div>
-          <div class="col-md-3"></div>
-      </div>
-  </div>
-
     <script src="../API/UserAPI.js"></script>
-    <script src="../js/register.js"></script>
     <script src="../js/login.js"></script>
-    <script src="../js/landing.js"></script>
 
-    <script src="../API/CollectionAPI.js"></script>
-    <script src="../js/collection.js"></script>
-    <script src="../js/item.js"></script>
-  </body>
 </html>
