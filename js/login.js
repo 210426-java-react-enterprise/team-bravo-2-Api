@@ -6,10 +6,6 @@ const initLogin = () => {
     const collectionTypeContainer = document.getElementById('collectionTypeContainer');
     const landingContainer = document.getElementById('landingContainer');
 
-
-
-
-
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
 

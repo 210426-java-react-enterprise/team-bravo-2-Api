@@ -5,6 +5,10 @@ const collectionInit = () => {
     const collectionTypeName = document.getElementById('collection-type-name');
 
     const collectionTypeSubmit = document.getElementById("collection-type-submit");
+
+    const collectionTypeContainer = document.getElementById('collectionTypeContainer');
+    const collectionItemContainer = document.getElementById('collectionItemContainer');
+
     const shouldNavigateAway = false;
 
     //Dynamic dropmenu load
@@ -52,7 +56,21 @@ const collectionInit = () => {
             "collectionName": collectionTypeName.value.trim(),
             "collectionDescrip": collectionTypeDesc.value
         };
-        collectionAPI.addCollection(collectionTypeData);
+
+        // let collection = await collectionAPI.addCollection(collectionTypeData);
+
+        // if (collecion.status === 500) {
+        //     alert("Collection creation failed.")
+        // }
+        // if (collection.id) {
+
+        // sessionStorage.setItem('userCollections', collection);
+
+        collectionTypeContainer.classList.add('d-none');
+        collectionItemContainer.classList.remove('d-none')
+        // }
+
+
     }
 
     const validateInputs = () => {
