@@ -17,15 +17,14 @@ const initLogin = () => {
 
         let user = await userAPI.loginUser(loginData);
 
-        let collectionInfo = await collectionAPI.getAllCollectionByID(user);
+        let collectionInfo = await collectionAPI.getAllCollectionByID();
+        console.log(collectionInfo);
 
 
         if (user.status === 500) {
             alert("You entered invalid credentials.")
         }
         if (user.id) {
-
-            sessionStorage.setItem("authUser", JSON.stringify(user));
 
             loginContainer.classList.add('d-none')
             collectionTypeContainer.classList.remove('d-none');
