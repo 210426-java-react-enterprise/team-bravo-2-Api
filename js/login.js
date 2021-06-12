@@ -6,9 +6,11 @@ const initLogin = () => {
     const collectionTypeContainer = document.getElementById('collectionTypeContainer');
     const landingContainer = document.getElementById('landingContainer');
 
-
-
-
+    // console.log(sessionStorage.JWT)
+    // if (sessionStorage.JWT) {
+    //     loginContainer.classList.add('d-none')
+    //     collectionTypeContainer.classList.remove('d-none');
+    // }
 
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
@@ -21,15 +23,17 @@ const initLogin = () => {
 
         let user = await userAPI.loginUser(loginData);
 
-        let collectionInfo = await collectionAPI.getAllCollectionByID(user);
+        // if(user.id){
+
+        // }   
+        //      let collectionInfo = await collectionAPI.getAllCollectionByID();
+        // console.log(collectionInfo);
 
 
         if (user.status === 500) {
             alert("You entered invalid credentials.")
         }
         if (user.id) {
-
-            sessionStorage.setItem("authUser", JSON.stringify(user));
 
             loginContainer.classList.add('d-none')
             collectionTypeContainer.classList.remove('d-none');

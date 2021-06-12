@@ -2,6 +2,18 @@ const collectionAPI = {
 
     localURL: 'http://localhost:5000',
 
+    JWT: sessionStorage.JWT,
+
+    addItem: async () => {
+        let res;
+
+        try {
+            // res = await (fetch(`${collectionAPI.localURL}/movieCollections/save`)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
     getCollectionTypes: async () => {
 
         let res;
@@ -16,54 +28,46 @@ const collectionAPI = {
 
     },
 
-    getAllCollectionByID: async(data) =>{
+    getAllCollectionByID: async () => {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collection/getInfoById`, {
-                method: 'POST',
-                body: JSON.stringify(data),
+            res = await fetch(`${collectionAPI.localURL}/collection/getInfoByID`, {
+                method: 'GET',
+                // body: JSON.stringify(data),
                 headers: {
-                    'Content-Type': 'application/json'
-                
+                    'Content-Type': 'application/json',
+                    'Authorization': collectionAPI.JWT
+
                 },
             })
         } catch (error) {
             // return undefined;
             console.log(error);
         }
-        
+
         const json = await res.json();
-        console.log(json)
         return json;
 
 
     },
 
-
-
     addCollection: async (data) => {
-        console.log(data);
 
+        let res;
 
+        try {
+            res = await fetch(`${collectionAPI.localURL}/collection/save`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            });
+        } catch (error) {
+            console.log(error)
+        }
 
-
-
-        // let res;
-
-        // try {
-        //     res = await fetch('/collection/create', {
-        //         method: 'POST',
-        //         body: JSON.stringify(data),
-        //         headers: { 'Content-Type': 'application/json' }
-        //     });
-        // } catch (error) {
-        //     console.log(error)
-        // }
-
-
-        // const json = await res.json();
-        // return json;
+        const json = await res.json();
+        return json;
 
         ///to create cool info type object
         //account json object => from local storage
