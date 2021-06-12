@@ -17,6 +17,9 @@ const initLogin = () => {
 
         let user = await userAPI.loginUser(loginData);
 
+        let collectionInfo = await collectionAPI.getAllCollectionByID(user);
+
+
         if (user.status === 500) {
             alert("You entered invalid credentials.")
         }

@@ -24,12 +24,14 @@ const userAPI = {
                 body: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json'
+                
                 },
             })
         } catch (error) {
             // return undefined;
             console.log(error);
         }
+        
         const json = await res.json();
         console.log(json)
         return json;

@@ -26,6 +26,32 @@ const collectionAPI = {
 
     },
 
+    getAllCollectionByID: async(data) =>{
+        let res;
+
+        try {
+            res = await fetch(`${collectionAPI.localURL}/collection/getInfoById`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                
+                },
+            })
+        } catch (error) {
+            // return undefined;
+            console.log(error);
+        }
+        
+        const json = await res.json();
+        console.log(json)
+        return json;
+
+
+    },
+
+
+
     addCollection: async (data) => {
 
         let res;
