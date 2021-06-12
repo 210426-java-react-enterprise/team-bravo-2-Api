@@ -70,16 +70,26 @@ label {
   display: none;
 }
 
+#collectionsContainer {
+}
+
 /* ITEM/COLLECTION CARD DISPLAY */
 .collection-card-container {
+  width: 100%;
   text-align: center;
-  align-items: center;
-  background-color: rgb(230, 224, 224);
+  flex-flow: row wrap;
+  display: inline-flex;
+  /* background-color: aquamarine; */
+  justify-content: space-evenly;
+  /* text-align: center; */
+  /* align-items: center; */
+  background-color: rgb(182, 202, 223);
 }
 
 .item-card-body {
   border: 2px solid rgb(151, 147, 147);
-  width: 60%;
+  border: 2px solid rgb(151, 147, 147);
+  width: 40%;
   /* background-color: aquamarine; */
   float: left;
   margin-bottom: 20px;

@@ -35,12 +35,13 @@ const collectionInit = () => {
             // collectionName.innerText = collection.collectionName;
 
 
-            let collectiionTypeHTML = `<div class="card collection-card-container mt-3" id='collectionCard${collection.account.id}' style="width: 100%">
+            let collectiionTypeHTML = `<div class="card collection-card-container mt-3" style="width: 100%">
                                 <div class="card-body collection-body" style="text-align: center">
                                 <h2 class="card-title" id="collectionName">${collection.collectionName}</h2>
                                 <h5 class="card-title" id="collectionType">Type: ${collection.collType.mediumType}</h5>
                                 <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
                                 <a href="#" class="btn btn-danger" id="deleteItem">Delete</a>
+                                <div class='collection-card-container mt-3' id='collectionCard${collection.account.id}'></div>
                                 </div>`
 
             collectionsContainer.innerHTML = collectiionTypeHTML;
@@ -56,7 +57,7 @@ const collectionInit = () => {
                 let collectionItemHTML = `<div class="card item-card-body" id='${item.movie.id}'">
                                         <img src="..." class="card-img-top" alt="...">
                                         <div class="card-body">
-                                        <h2 class="card-title">${item.movie.title}</h2>
+                                        <h4 class="card-title">${item.movie.title}</h4>
                                         <h5 class="card-title">${item.movie.year}</h5>
                                         <h5 class="card-title">${item.movie.prodCompany}</h5>
                                         <h5 class="card-title">${item.movie.mpaaRating}</h5>
