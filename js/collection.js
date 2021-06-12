@@ -35,18 +35,47 @@ const collectionInit = () => {
             // collectionName.innerText = collection.collectionName;
 
 
-            let htmlString = `<div class="card" id='collectionCard${collection.account.id}' style="width: 100%;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body collection-body">
-                                <!-- <h5 class="card-title" id="collectionType">${collection.collType.mediumType}</h5> -->
+            let collectiionTypeHTML = `<div class="card mt-3" id='collectionCard${collection.account.id}' style="width: 100%;">
+                                <div class="card-body collection-body" style="text-align: center">
                                 <h4 class="card-title" id="collectionName">${collection.collectionName}</h4>
+                                <h5 class="card-title" id="collectionType">Type: ${collection.collType.mediumType}</h5>
                                 <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
                                 <a href="#" class="btn btn-danger" id="deleteItem">Delete</a>
                                 </div>`
 
-            collectionsContainer.innerHTML = htmlString;
+            collectionsContainer.innerHTML = collectiionTypeHTML;
+            console.log(collection.movieCollections)
+
+            let moveiArr = collection.movieCollections;
+
+            for (item of moveiArr) {
+                item.owend = 1 ? item.owend = "Yes" : item.owend = "No";
+                item.tradable = 1 ? item.tradable = "Yes" : item.tradable = "No";
+                item.watched = 1 ? item.watched = "Yes" : item.watched = "No";
+
+                let collectionItemHTML = `<div class="card" id='${item.movie.id}' 'style="width: 18rem;">
+                                        <img src="..." class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h2 class="card-title">${item.movie.title}</h2>
+                                        <h5 class="card-title">${item.movie.year}</h5>
+                                        <h5 class="card-title">${item.movie.prodCompany}</h5>
+                                        <h5 class="card-title">${item.movie.mpaaRating}</h5>
+                                        <h5 class="card-title">${item.movie.genre}</h5>
+                                        <p>description</p>
+                                        <h5 class="card-title">Owned: ${item.owned}</h5>
+                                        <h5 class="card-title">For Trade: ${item.tradeable}</h5>
+                                        <p class="card-title">User Description: ${item.userDescript}</p>
+                                        <h5 class="card-title">User Rating: ${item.userRating}</h5>
+                                        <a href="#" class="btn btn-success">Save</a>
+                                        </div>
+                                    </div>`
+
+                let collectionCard = document.getElementById(`collectionCard${collection.account.id}`);
+                collectionCard.innerHTML += collectionItemHTML
+            }
 
         }
+
 
         // collectionType.innerText = collections.collType.mediumType;
 
