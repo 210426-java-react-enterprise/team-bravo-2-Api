@@ -79,7 +79,8 @@ label {
 
 .item-card-body {
   border: 2px solid rgb(151, 147, 147);
-  width: 75%;
+  width: 60%;
   /* background-color: aquamarine; */
+  float: left;
   margin-bottom: 20px;
 }

@@ -53,7 +53,7 @@ const collectionInit = () => {
                 item.tradable = 1 ? item.tradable = "Yes" : item.tradable = "No";
                 item.watched = 1 ? item.watched = "Yes" : item.watched = "No";
 
-                let collectionItemHTML = `<div class="card item-card-body" id='${item.movie.id}' 'style="width: 10rem;">
+                let collectionItemHTML = `<div class="card item-card-body" id='${item.movie.id}'">
                                         <img src="..." class="card-img-top" alt="...">
                                         <div class="card-body">
                                         <h2 class="card-title">${item.movie.title}</h2>

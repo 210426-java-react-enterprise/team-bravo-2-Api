@@ -90,8 +90,8 @@
   <!-- CREATE COLLECTION FORM -->
   <div class="container" id="collectionTypeContainer">
     <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
         <form id="collection-type-form">
           <div class="collection-form-title">
             <h2 id="xyz">Create a New Collection</h2>
@@ -123,35 +123,27 @@
             </button>
           </div>
           <div>
+
             <!-- DISPLAY COLLECTION CONTAINDER -->
-            <!-- <div class="container"> -->
-            <!-- <div class="row"> -->
-            <!-- <div class="col-md-3"></div> -->
-            <!-- <div class="col-md-6"> -->
+
             <div id="collectionsContainer"></div>
 
-          
-           
 
-            </div>
-            <!-- </div> -->
-            <!-- <div class="col-md-3"></div> -->
-            <!-- </div> -->
-            <!-- </div> -->
           </div>
-        </form>
-
-
       </div>
-      <div class="col-md-2"></div>
+      </form>
+
+
     </div>
+    <div class="col-md-3"></div>
+  </div>
   </div>
 
-  <!-- 3RD PARTY SEARCH ITEM -->
+                                <!-- 3RD PARTY SEARCH ITEM -->
   <div class="container" id="searchItemContainer">
     <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
         <form id="collection-search-form">
           <div class="collection-form-title">
             <h1>Search for an Item</h1>
@@ -163,14 +155,16 @@
           </div>
 
           <div class="collection-form-buttons">
-            <button disabled type="submit" class="btn btn-primary">
+            <button disabled type="submit" id='collectionSearchSubmit' class="btn btn-primary">
               Submit
             </button>
             <button type="reset" class="btn btn-secondary">Clear</button>
           </div>
+          
+          <div class="search-results-container" id='collectionSearchContainer'></div>
         </form>
       </div>
-      <div class="col-md-3"></div>
+      <div class="col-md-2"></div>
     </div>
   </div>
 
@@ -194,10 +188,10 @@
               <input type="checkbox" class="form-check-input" id="collectionItemWatched" />
             </div>
 
-            <div class="collection-form-buttons">
+            <!-- <div class="collection-form-buttons">
               <button disabled type="submit" class="btn btn-primary" id="collection-search-submit">
                 Submit
-              </button>
+              </button> -->
 
             <div class="form-group form-check">
               <label class="form-check-label" for="collectionItemTradeable">Trade:</label>
@@ -297,6 +291,9 @@
   <script src="../API/CollectionAPI.js"></script>
   <script src="../js/collection.js"></script>
   <script src="../js/item.js"></script>
+
+  <script src='../API//MovieSearchAPI.js'></script>
+  <script src='../js/omdbSearch.js'></script>
 </body>
 
 </html>
