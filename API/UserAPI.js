@@ -24,19 +24,18 @@ const userAPI = {
                 body: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json'
+
                 },
             })
         } catch (error) {
-            // return undefined;
             console.log(error);
         }
+
+        sessionStorage.setItem('JWT', res.headers.get("Authorization"));
+
         const json = await res.json();
-        console.log(json)
         return json;
 
-
-        // .then((res) => res.json())
-        // .then((data) => console.log(data));
     },
 
     register: async (data) => {

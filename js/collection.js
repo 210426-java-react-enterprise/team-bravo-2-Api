@@ -1,11 +1,87 @@
 const collectionInit = () => {
-    ///COLLECTION TYPE FORM INPUTS
+    ///COLLECTION TYPE FORM INPUTS ELEMENTS
     const collectionType = document.getElementById('collection-type');
     const collectionTypeDesc = document.getElementById("collection-type-description");
     const collectionTypeName = document.getElementById('collection-type-name');
-
     const collectionTypeSubmit = document.getElementById("collection-type-submit");
+
+    //CONTAINERS ELEMENTS
+    const collectionTypeContainer = document.getElementById('collectionTypeContainer');
+    const collectionItemContainer = document.getElementById('collectionItemContainer');
+
     const shouldNavigateAway = false;
+
+
+
+
+
+    const renderCollections = async () => {
+        //COLLECTION DISPLAY ELEMENTS
+        // let collectionType = document.getElementById('collectionType');
+        // let collectionName = document.getElementById('collectionName');
+        // let collectionDescription = document.getElementById('collectionDescrip');
+        let collectionsContainer = document.getElementById('collectionsContainer');
+
+
+        const collections = await collectionAPI.getAllCollectionByID();
+        // collectionItemContainer.classList.remove('d-none');
+        console.log(collections)
+        // console.log(collectionTypeRender)
+        //RENDER COLLECTION NAMES
+        for (const [index, collection] of Object.entries(collections)) {
+            console.log(index, collection)
+            // collectionType.innerText = collection.collType.mediumType;
+            // collectionDescription.innerText = collection.collectionDescrip;
+            // collectionName.innerText = collection.collectionName;
+
+
+            let collectiionTypeHTML = `<div class="card collection-card-container mt-3" id='collectionCard${collection.account.id}' style="width: 100%">
+                                <div class="card-body collection-body" style="text-align: center">
+                                <h2 class="card-title" id="collectionName">${collection.collectionName}</h2>
+                                <h5 class="card-title" id="collectionType">Type: ${collection.collType.mediumType}</h5>
+                                <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
+                                <a href="#" class="btn btn-danger" id="deleteItem">Delete</a>
+                                </div>`
+
+            collectionsContainer.innerHTML = collectiionTypeHTML;
+            console.log(collection.movieCollections)
+
+            let moveiArr = collection.movieCollections;
+
+            for (item of moveiArr) {
+                item.owned = 1 ? item.owned = "Yes" : item.ownd = "No";
+                item.tradable = 1 ? item.tradable = "Yes" : item.tradable = "No";
+                item.watched = 1 ? item.watched = "Yes" : item.watched = "No";
+
+                let collectionItemHTML = `<div class="card item-card-body" id='${item.movie.id}' 'style="width: 10rem;">
+                                        <img src="..." class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h2 class="card-title">${item.movie.title}</h2>
+                                        <h5 class="card-title">${item.movie.year}</h5>
+                                        <h5 class="card-title">${item.movie.prodCompany}</h5>
+                                        <h5 class="card-title">${item.movie.mpaaRating}</h5>
+                                        <h5 class="card-title">${item.movie.genre}</h5>
+                                        <p>${item.movie.description}</p>
+                                        <h5 class="card-title">Owned: ${item.owned}</h5>
+                                        <h5 class="card-title">For Trade: ${item.tradable}</h5>
+                                        <p class="card-title">User Description: ${item.userDescrip}</p>
+                                        <h5 class="card-title">User Rating: ${item.userRating}</h5>
+                                        <a href="#" class="btn btn-success">Save</a>
+                                        </div>
+                                    </div>`
+
+                let collectionCard = document.getElementById(`collectionCard${collection.account.id}`);
+                collectionCard.innerHTML += collectionItemHTML
+            }
+
+        }
+
+
+        // collectionType.innerText = collections.collType.mediumType;
+
+
+    }
+    renderCollections();
 
     //Dynamic dropmenu load
     const typeDropdown = async () => {
@@ -52,7 +128,21 @@ const collectionInit = () => {
             "collectionName": collectionTypeName.value.trim(),
             "collectionDescrip": collectionTypeDesc.value
         };
-        collectionAPI.addCollection(collectionTypeData);
+
+        // let collection = await collectionAPI.addCollection(collectionTypeData);
+
+        // if (collecion.status === 500) {
+        //     alert("Collection creation failed.")
+        // }
+        // if (collection.id) {
+
+        // sessionStorage.setItem('userCollections', collection);
+
+        collectionTypeContainer.classList.add('d-none');
+        collectionItemContainer.classList.remove('d-none')
+        // }
+
+
     }
 
     const validateInputs = () => {

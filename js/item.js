@@ -43,6 +43,7 @@ const handleCollectionItemSubmit = async (event) => {
     collectionItemData.userComment = collectionItemUserComment.value; //must be trim if optional input?
     collectionItemData.userTradeable = collectionItemTradeable.checked ? collectionItemTradeable.value = 1 : collectionItemOwned.value = 0;
 
+    ///this is where route call would go
     console.log(collectionItemData);
 }
 
