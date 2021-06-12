@@ -8,11 +8,26 @@ const initLanding = () => {
     const collectionItemContainer = document.getElementById('collectionItemContainer');
     const searchItemContainer = document.getElementById('searchItemContainer');
 
-    registerContainer.classList.add('d-none');
-    loginContainer.classList.add('d-none');
-    collectionTypeContainer.classList.add('d-none');
-    collectionItemContainer.classList.add('d-none');
-    searchItemContainer.classList.add('d-none');
+    if (sessionStorage.JWT) {
+        landingContainer.classList.add("d-none");
+        loginContainer.classList.add('d-none');
+        collectionTypeContainer.classList.remove('d-none');
+        registerContainer.classList.add('d-none');
+        loginContainer.classList.add('d-none');
+        // collectionTypeContainer.classList.add('d-none');
+        collectionItemContainer.classList.add('d-none');
+        searchItemContainer.classList.add('d-none');
+    } else {
+        landingContainer.classList.remove("d-none");
+        loginContainer.classList.add('d-none');
+        collectionTypeContainer.classList.remove('d-none');
+        registerContainer.classList.add('d-none');
+        loginContainer.classList.add('d-none');
+        collectionTypeContainer.classList.add('d-none');
+        collectionItemContainer.classList.add('d-none');
+        searchItemContainer.classList.add('d-none');
+    }
+
 
 
     login.addEventListener('click', function (e) {

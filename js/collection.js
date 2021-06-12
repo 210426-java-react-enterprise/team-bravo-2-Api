@@ -11,6 +11,16 @@ const collectionInit = () => {
 
     const shouldNavigateAway = false;
 
+    const renderCollections = async () => {
+        const collections = await collectionAPI.getAllCollectionByID();
+        // collectionItemContainer.classList.remove('d-none');
+
+        console.log(collections)
+
+
+    }
+    renderCollections();
+
     //Dynamic dropmenu load
     const typeDropdown = async () => {
 
