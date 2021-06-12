@@ -69,3 +69,17 @@ label {
 .d-none {
   display: none;
 }
+
+/* ITEM/COLLECTION CARD DISPLAY */
+.collection-card-container {
+  text-align: center;
+  align-items: center;
+  background-color: rgb(230, 224, 224);
+}
+
+.item-card-body {
+  border: 2px solid rgb(151, 147, 147);
+  width: 75%;
+  /* background-color: aquamarine; */
+  margin-bottom: 20px;
+}

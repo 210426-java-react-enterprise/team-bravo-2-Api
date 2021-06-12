@@ -35,9 +35,9 @@ const collectionInit = () => {
             // collectionName.innerText = collection.collectionName;
 
 
-            let collectiionTypeHTML = `<div class="card mt-3" id='collectionCard${collection.account.id}' style="width: 100%;">
+            let collectiionTypeHTML = `<div class="card collection-card-container mt-3" id='collectionCard${collection.account.id}' style="width: 100%">
                                 <div class="card-body collection-body" style="text-align: center">
-                                <h4 class="card-title" id="collectionName">${collection.collectionName}</h4>
+                                <h2 class="card-title" id="collectionName">${collection.collectionName}</h2>
                                 <h5 class="card-title" id="collectionType">Type: ${collection.collType.mediumType}</h5>
                                 <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
                                 <a href="#" class="btn btn-danger" id="deleteItem">Delete</a>
@@ -49,11 +49,11 @@ const collectionInit = () => {
             let moveiArr = collection.movieCollections;
 
             for (item of moveiArr) {
-                item.owend = 1 ? item.owend = "Yes" : item.owend = "No";
+                item.owned = 1 ? item.owned = "Yes" : item.ownd = "No";
                 item.tradable = 1 ? item.tradable = "Yes" : item.tradable = "No";
                 item.watched = 1 ? item.watched = "Yes" : item.watched = "No";
 
-                let collectionItemHTML = `<div class="card" id='${item.movie.id}' 'style="width: 18rem;">
+                let collectionItemHTML = `<div class="card item-card-body" id='${item.movie.id}' 'style="width: 10rem;">
                                         <img src="..." class="card-img-top" alt="...">
                                         <div class="card-body">
                                         <h2 class="card-title">${item.movie.title}</h2>
@@ -61,10 +61,10 @@ const collectionInit = () => {
                                         <h5 class="card-title">${item.movie.prodCompany}</h5>
                                         <h5 class="card-title">${item.movie.mpaaRating}</h5>
                                         <h5 class="card-title">${item.movie.genre}</h5>
-                                        <p>description</p>
+                                        <p>${item.movie.description}</p>
                                         <h5 class="card-title">Owned: ${item.owned}</h5>
-                                        <h5 class="card-title">For Trade: ${item.tradeable}</h5>
-                                        <p class="card-title">User Description: ${item.userDescript}</p>
+                                        <h5 class="card-title">For Trade: ${item.tradable}</h5>
+                                        <p class="card-title">User Description: ${item.userDescrip}</p>
                                         <h5 class="card-title">User Rating: ${item.userRating}</h5>
                                         <a href="#" class="btn btn-success">Save</a>
                                         </div>
