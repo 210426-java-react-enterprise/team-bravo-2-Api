@@ -1,21 +1,54 @@
 const collectionInit = () => {
-    ///COLLECTION TYPE FORM INPUTS
+    ///COLLECTION TYPE FORM INPUTS ELEMENTS
     const collectionType = document.getElementById('collection-type');
     const collectionTypeDesc = document.getElementById("collection-type-description");
     const collectionTypeName = document.getElementById('collection-type-name');
-
     const collectionTypeSubmit = document.getElementById("collection-type-submit");
 
+    //CONTAINERS ELEMENTS
     const collectionTypeContainer = document.getElementById('collectionTypeContainer');
     const collectionItemContainer = document.getElementById('collectionItemContainer');
 
     const shouldNavigateAway = false;
 
+
+
+
+
     const renderCollections = async () => {
+        //COLLECTION DISPLAY ELEMENTS
+        // let collectionType = document.getElementById('collectionType');
+        // let collectionName = document.getElementById('collectionName');
+        // let collectionDescription = document.getElementById('collectionDescrip');
+        let collectionsContainer = document.getElementById('collectionsContainer');
+
+
         const collections = await collectionAPI.getAllCollectionByID();
         // collectionItemContainer.classList.remove('d-none');
-
         console.log(collections)
+        // console.log(collectionTypeRender)
+        //RENDER COLLECTION NAMES
+        for (const [index, collection] of Object.entries(collections)) {
+            console.log(index, collection)
+            // collectionType.innerText = collection.collType.mediumType;
+            // collectionDescription.innerText = collection.collectionDescrip;
+            // collectionName.innerText = collection.collectionName;
+
+
+            let htmlString = `<div class="card" id='collectionCard${collection.account.id}' style="width: 100%;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body collection-body">
+                                <!-- <h5 class="card-title" id="collectionType">${collection.collType.mediumType}</h5> -->
+                                <h4 class="card-title" id="collectionName">${collection.collectionName}</h4>
+                                <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
+                                <a href="#" class="btn btn-danger" id="deleteItem">Delete</a>
+                                </div>`
+
+            collectionsContainer.innerHTML = htmlString;
+
+        }
+
+        // collectionType.innerText = collections.collType.mediumType;
 
 
     }
