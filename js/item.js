@@ -28,8 +28,6 @@ const collectionItemTradeable = document.getElementById('collectionItemTradeable
 const collectionItemSubmit = document.getElementById('collectionItemSubmit');
 
 
-
-
 // const shouldNavigateAway = false;
 
 const handleCollectionItemSubmit = async (event) => {

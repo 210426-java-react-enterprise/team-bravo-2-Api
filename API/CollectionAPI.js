@@ -54,6 +54,8 @@ const collectionAPI = {
 
     addCollection: async (data) => {
 
+        console.log(data);
+
         let res;
 
         try {

@@ -49,6 +49,5 @@ const movieSearchAPI = {
         const json = await res.json();
         console.log(json)
         return json;
-
     }
 }

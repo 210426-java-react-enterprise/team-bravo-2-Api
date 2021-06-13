@@ -36,22 +36,17 @@ const omdbSearchInit = () => {
         }
 
         let addAPIItem = document.getElementsByClassName('addAPIItem');
-        console.log(addAPIItem[0]);
 
         for (let i = 0; i < addAPIItem.length; i++) {
-            // console.log(addAPIItem[i])
             addAPIItem[i].addEventListener('click', function (event) {
                 event.preventDefault();
-                let moviereturn = movieSearchAPI.omdbImdbSearch(addAPIItem[i].value)
-                console.log(moviereturn)
-                // console.log(addAPIItem[i].value);
+                let movieReturn = movieSearchAPI.omdbImdbSearch(addAPIItem[i].value)
+                sessionStorage.setItem('movieReturn', movieReturn);
+
+                searchItemContainer.classList.add('d-none');
+                collectionItemContainer.classList.remove('d-none');
             })
         }
-
-        // addAPIItem.forEach((button) => console.log(button))
-
-
-
     }
 
     const validateInputs = () => {

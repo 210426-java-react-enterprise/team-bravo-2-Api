@@ -10,6 +10,8 @@ const collectionInit = () => {
     //CONTAINERS ELEMENTS
     const collectionTypeContainer = document.getElementById('collectionTypeContainer');
     const collectionItemContainer = document.getElementById('collectionItemContainer');
+    const searchItemContainer = document.getElementById('searchItemContainer');
+
 
     const shouldNavigateAway = false;
 
@@ -28,21 +30,32 @@ const collectionInit = () => {
         //RENDER COLLECTION NAMES
         for (const [index, collection] of Object.entries(collections)) {
             console.log(index, collection)
-            // collectionType.innerText = collection.collType.mediumType;
-            // collectionDescription.innerText = collection.collectionDescrip;
-            // collectionName.innerText = collection.collectionName;
-
 
             let collectiionTypeHTML = `<div class="card collection-card-container mt-3" style="width: 100%">
                                 <div class="card-body collection-card-body" >
                                 <h2 class="card-title" id="collectionName">${collection.collectionName}</h2>
                                 <h5 class="card-title" id="collectionType">Type: ${collection.collType.mediumType}</h5>
                                 <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
+                                <div class="collection-form-buttons">
+                                    <button type="button" class="btn btn-success m-3 addItemButton" value='${collection}''>Add Item</button>
+                                    <button type="button" class="btn btn-danger m-3" value='${collection.id}' id='deleteCollectionButon'>Delete</button>
+                                </div>
                                 <div class='collection-card-container mt-3' id='collectionCard${collection.account.id}'></div>
                                 </div>`
 
-            collectionsContainer.innerHTML = collectiionTypeHTML;
-            console.log(collection.movieCollections)
+            collectionsContainer.innerHTML += collectiionTypeHTML;
+
+            let addItemButton = document.getElementsByClassName('addItemButton');
+
+            for (let i = 0; i < addItemButton.length; i++) {
+                addItemButton[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    searchItemContainer.classList.remove('d-none');
+                    collectionTypeContainer.classList.add('d-none');
+
+                })
+            }
 
             let moveiArr = collection.movieCollections;
 
@@ -125,21 +138,21 @@ const collectionInit = () => {
                 "mediumType": collectionType.value
             },
             "collectionName": collectionTypeName.value.trim(),
-            "collectionDescrip": collectionTypeDesc.value
+            "collectionDescrip": collectionTypeDesc.value.trim()
         };
 
-        // let collection = await collectionAPI.addCollection(collectionTypeData);
+        let collection = await collectionAPI.addCollection(collectionTypeData);
 
-        // if (collecion.status === 500) {
-        //     alert("Collection creation failed.")
-        // }
-        // if (collection.id) {
+        if (collection.status === 500) {
+            alert("Collection creation failed.")
+        }
+        if (collection.id) {
 
-        // sessionStorage.setItem('userCollections', collection);
+            sessionStorage.setItem('userCollections', collection);
 
-        collectionTypeContainer.classList.add('d-none');
-        collectionItemContainer.classList.remove('d-none')
-        // }
+            collectionTypeContainer.classList.add('d-none');
+            collectionItemContainer.classList.remove('d-none')
+        }
 
 
     }
