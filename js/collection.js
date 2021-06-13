@@ -4,8 +4,8 @@ const collectionInit = () => {
     const collectionTypeDesc = document.getElementById("collection-type-description");
     const collectionTypeName = document.getElementById('collection-type-name');
     const collectionTypeSubmit = document.getElementById("collection-type-submit");
-    const addItemButton = document.getElementById('addItemButton');
     const addItemBack = document.getElementById('addItemBack');
+    const loadCollections = document.getElementById('loadCollections');
 
     //CONTAINERS ELEMENTS
     const collectionTypeContainer = document.getElementById('collectionTypeContainer');
@@ -16,21 +16,16 @@ const collectionInit = () => {
     const shouldNavigateAway = false;
 
     const renderCollections = async () => {
-        //COLLECTION DISPLAY ELEMENTS
-        // let collectionType = document.getElementById('collectionType');
-        // let collectionName = document.getElementById('collectionName');
-        // let collectionDescription = document.getElementById('collectionDescrip');
-        let collectionsContainer = document.getElementById('collectionsContainer');
 
+        const collectionsAPI = await collectionAPI.getAllCollectionByID();
+        sessionStorage.setItem('collections', JSON.stringify(collectionsAPI));
 
-        const collections = await collectionAPI.getAllCollectionByID();
-        // collectionItemContainer.classList.remove('d-none');
-        console.log(collections)
-        // console.log(collectionTypeRender)
+        let collections;
+
+        !sessionStorage.collections ? collections = collectionsAPI : collections = JSON.parse(sessionStorage.collections);
+
         //RENDER COLLECTION NAMES
         for (const [index, collection] of Object.entries(collections)) {
-            console.log(index, collection)
-
 
             let collectiionTypeHTML = `<div class="card collection-card-container mt-3" style="width: 100%">
                                 <div class="card-body collection-card-body" >
@@ -86,13 +81,7 @@ const collectionInit = () => {
                 let collectionCard = document.getElementById(`collectionCard${collection.account.id}`);
                 collectionCard.innerHTML += collectionItemHTML
             }
-
         }
-
-
-        // collectionType.innerText = collections.collType.mediumType;
-
-
     }
     renderCollections();
 
@@ -174,10 +163,17 @@ const collectionInit = () => {
         searchItemContainer.classList.add('d-none');
     })
 
-    addItemButton.addEventListener('click', function (event) {
-        collectionTypeContainer.classList.add('d-none');
-        searchItemContainer.classList.remove('d-none');
+    loadCollections.addEventListener('click', async function (event) {
+        const collectionsAPI = await collectionAPI.getAllCollectionByID();
+        sessionStorage.setItem('collections', JSON.stringify(collectionsAPI));
+        location.reload();
+
     })
+
+    // addItemButton.addEventListener('click', function (event) {
+    //     collectionTypeContainer.classList.add('d-none');
+    //     searchItemContainer.classList.remove('d-none');
+    // })
 
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 
