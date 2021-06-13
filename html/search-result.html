@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS for Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/collection.css" />
+    <link rel="stylesheet" href="../css/item.css" />
+    <link rel="stylesheet" href="../css/search.css" />
+
+    <!-- JavaScript for Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Search Results</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <form>
+            <div class="row mb-3">
+              <label for="movie-image" class="col-sm-2 col-form-label"
+                >Image</label
+              >
+              <div class="col-sm-10">
+                <img src="https://via.placeholder.com/150" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="title" class="col-sm-2 col-form-label">Title:</label>
+              <br />
+              <p id="movie-title" class="col-sm-2 col-form-label">
+                placeholder title
+              </p>
+            </div>
+            <div class="row mb-3">
+              <label for="year" class="col-sm-2 col-form-label"
+                >Released:</label
+              >
+              <br />
+              <p id="movie-year" class="col-sm-2 col-form-label">20xx</p>
+            </div>
+            <!-- I -->
+            <button type="button" value="imdbId" class="btn btn-primary">
+              Add
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

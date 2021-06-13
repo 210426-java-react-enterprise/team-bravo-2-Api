@@ -28,8 +28,6 @@ const collectionItemTradeable = document.getElementById('collectionItemTradeable
 const collectionItemSubmit = document.getElementById('collectionItemSubmit');
 
 
-
-
 // const shouldNavigateAway = false;
 
 const handleCollectionItemSubmit = async (event) => {
@@ -37,13 +35,24 @@ const handleCollectionItemSubmit = async (event) => {
 
     let collectionItemData = {};
 
+    let { title, year, prodCompany, mpaaRating, lengthMin, genre, description } = JSON.parse(sessionStorage.movieReturn);
+
+    collectionItemData.title = title;
+    collectionItemData.year = year;
+    collectionItemData.prodCompany = prodCompany;
+    collectionItemData.mpaaRating = mpaaRating;
+    collectionItemData.lengthMin = lengthMin;
+    collectionItemData.genre = genre;
+    collectionItemData.description = description;
+
     collectionItemData.owned = collectionItemOwned.checked ? collectionItemOwned.value = 1 : collectionItemOwned.value = 0;
     collectionItemData.watched = collectionItemWatched.checked ? collectionItemWatched.value = 1 : collectionItemOwned.value = 0;
     collectionItemData.userRating = parseInt(collectionItemUserRating.value);
     collectionItemData.userComment = collectionItemUserComment.value; //must be trim if optional input?
     collectionItemData.userTradeable = collectionItemTradeable.checked ? collectionItemTradeable.value = 1 : collectionItemOwned.value = 0;
 
-    console.log(collectionItemData);
+    ///this is where route call would go
+    itemAPI.createItem(collectionItemData);
 }
 
 

@@ -16,6 +16,11 @@ h5 {
   color: rgb(66, 65, 65);
 }
 
+hr {
+  /* border-width: 5px;
+  color: black; */
+}
+
 html,
 body {
   height: 100%;
@@ -25,6 +30,10 @@ body {
 
 body {
   font-family: "Roboto", sans-serif, Geneva, Verdana, sans-serif;
+}
+
+.titles {
+  text-align: center;
 }
 
 #collection-type-form {
@@ -68,4 +77,34 @@ label {
 
 .d-none {
   display: none;
+}
+/* 
+.collection-card-body {
+  style="text-align: center"
+  background-color: aqua;
+  border: 3px solid black;
+} */
+
+/* ITEM/COLLECTION CARD DISPLAY */
+.collection-card-container {
+  width: 100%;
+  text-align: center;
+  flex-flow: row wrap;
+  display: inline-flex;
+  /* border: 3px solid black; */
+  /* background-color: aquamarine; */
+  justify-content: space-evenly;
+  /* text-align: center; */
+  /* align-items: center; */
+  background-color: rgb(182, 202, 223);
+}
+
+.item-card-body {
+  border: 2px solid rgb(151, 147, 147);
+  border: 2px solid rgb(151, 147, 147);
+  width: 50%;
+  max-width: 300px;
+  /* background-color: aquamarine; */
+  float: left;
+  margin: 0 10px 20px 10px;
 }

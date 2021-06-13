@@ -65,3 +65,32 @@ label {
 label {
   margin-left: 5px;
 }
+
+/* SEARCH RESULTS */
+
+#collectionSearchContainer {
+  width: 100%;
+  text-align: center;
+  flex-flow: row wrap;
+  display: inline-flex;
+  /* background-color: aquamarine; */
+  justify-content: space-evenly;
+}
+
+.searchImage {
+  width: 60%;
+}
+
+.search-card-body {
+  width: 40%;
+  /* height: 100%; */
+  background-color: rgb(230, 224, 224);
+  border: 2px solid rgb(151, 147, 147);
+  /* margin: 10px; */
+  /* position: relative; */
+}
+
+#addButton {
+  width: 40%;
+  /* margin: 5px; */
+}

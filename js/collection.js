@@ -1,11 +1,89 @@
 const collectionInit = () => {
-    ///COLLECTION TYPE FORM INPUTS
+    ///COLLECTION TYPE FORM INPUTS ELEMENTS
     const collectionType = document.getElementById('collection-type');
     const collectionTypeDesc = document.getElementById("collection-type-description");
     const collectionTypeName = document.getElementById('collection-type-name');
-
     const collectionTypeSubmit = document.getElementById("collection-type-submit");
+    const addItemBack = document.getElementById('addItemBack');
+    const loadCollections = document.getElementById('loadCollections');
+
+    //CONTAINERS ELEMENTS
+    const collectionTypeContainer = document.getElementById('collectionTypeContainer');
+    const collectionItemContainer = document.getElementById('collectionItemContainer');
+    const searchItemContainer = document.getElementById('searchItemContainer');
+
+
     const shouldNavigateAway = false;
+
+    const renderCollections = async () => {
+
+        const collectionsAPI = await collectionAPI.getAllCollectionByID();
+        sessionStorage.setItem('collections', JSON.stringify(collectionsAPI));
+
+        let collections;
+
+        !sessionStorage.collections ? collections = collectionsAPI : collections = JSON.parse(sessionStorage.collections);
+
+        //RENDER COLLECTION NAMES
+        for (const [index, collection] of Object.entries(collections)) {
+
+            let collectiionTypeHTML = `<div class="card collection-card-container mt-3" style="width: 100%">
+                                <div class="card-body collection-card-body" >
+                                <h2 class="card-title" id="collectionName">${collection.collectionName}</h2>
+                                <h5 class="card-title" id="collectionType">Type: ${collection.collType.mediumType}</h5>
+                                <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
+                                <div class="collection-form-buttons">
+                                    <button type="button" class="btn btn-success m-3 addItemButton" value='${collection}''>Add Item</button>
+                                    <button type="button" class="btn btn-danger m-3" value='${collection.id}' id='deleteCollectionButon'>Delete</button>
+                                </div>
+                                <div class='collection-card-container mt-3' id='collectionCard${collection.account.id}'></div>
+                                </div>`
+
+            collectionsContainer.innerHTML += collectiionTypeHTML;
+
+            let addItemButton = document.getElementsByClassName('addItemButton');
+
+            for (let i = 0; i < addItemButton.length; i++) {
+                addItemButton[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    searchItemContainer.classList.remove('d-none');
+                    collectionTypeContainer.classList.add('d-none');
+
+                })
+            }
+
+            let moveiArr = collection.movieCollections;
+
+            for (item of moveiArr) {
+                item.owned = 1 ? item.owned = "Yes" : item.ownd = "No";
+                item.tradable = 1 ? item.tradable = "Yes" : item.tradable = "No";
+                item.watched = 1 ? item.watched = "Yes" : item.watched = "No";
+
+                let collectionItemHTML = `<div class="card item-card-body" id='${item.movie.id}'">
+                                        <img src="..." class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h4 class="card-title">${item.movie.title}</h4>
+                                        <h5 class="card-title">${item.movie.year}</h5>
+                                        <h5 class="card-title">${item.movie.prodCompany}</h5>
+                                        <h5 class="card-title">${item.movie.mpaaRating}</h5>
+                                        <h5 class="card-title">${item.movie.genre}</h5>
+                                        <p>${item.movie.description}</p>
+                                        <h5 class="card-title">Owned: ${item.owned}</h5>
+                                        <h5 class="card-title">For Trade: ${item.tradable}</h5>
+                                        <p class="card-title">User Description: ${item.userDescrip}</p>
+                                        <h5 class="card-title">User Rating: ${item.userRating}</h5>
+                                        <button type="button" class="btn btn-danger m-3" id='deleteItemButton'>Delete</button>
+
+                                        </div>
+                                    </div>`
+
+                let collectionCard = document.getElementById(`collectionCard${collection.account.id}`);
+                collectionCard.innerHTML += collectionItemHTML
+            }
+        }
+    }
+    renderCollections();
 
     //Dynamic dropmenu load
     const typeDropdown = async () => {
@@ -50,9 +128,23 @@ const collectionInit = () => {
                 "mediumType": collectionType.value
             },
             "collectionName": collectionTypeName.value.trim(),
-            "collectionDescrip": collectionTypeDesc.value
+            "collectionDescrip": collectionTypeDesc.value.trim()
         };
-        collectionAPI.addCollection(collectionTypeData);
+
+        let collection = await collectionAPI.addCollection(collectionTypeData);
+
+        if (collection.status === 500) {
+            alert("Collection creation failed.")
+        }
+        if (collection.id) {
+
+            sessionStorage.setItem('userCollections', collection);
+
+            collectionTypeContainer.classList.add('d-none');
+            collectionItemContainer.classList.remove('d-none')
+        }
+
+
     }
 
     const validateInputs = () => {
@@ -65,6 +157,18 @@ const collectionInit = () => {
     }
 
     //EVENT LISTENERS
+
+    addItemBack.addEventListener('click', function (event) {
+        collectionTypeContainer.classList.remove('d-none');
+        searchItemContainer.classList.add('d-none');
+    })
+
+    loadCollections.addEventListener('click', async function (event) {
+        const collectionsAPI = await collectionAPI.getAllCollectionByID();
+        sessionStorage.setItem('collections', JSON.stringify(collectionsAPI));
+        location.reload();
+
+    })
 
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 
