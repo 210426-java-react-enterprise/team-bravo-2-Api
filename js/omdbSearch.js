@@ -71,7 +71,5 @@ const omdbSearchInit = () => {
         handleCollectionTypeSubmit(event);
 
     })
-
-
 }
 omdbSearchInit();

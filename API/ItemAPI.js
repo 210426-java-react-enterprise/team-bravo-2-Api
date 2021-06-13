@@ -8,7 +8,7 @@ const itemAPI = {
         let res;
 
         try {
-            res = await fetch(`${userAPI.apiURL}/movieCollections`, {
+            res = await fetch(`${userAPI.apiURL}/movieCollections/save`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
