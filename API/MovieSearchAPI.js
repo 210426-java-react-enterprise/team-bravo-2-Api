@@ -27,6 +27,28 @@ const movieSearchAPI = {
 
         // .then((res) => res.json())
         // .then((data) => console.log(data));
-    }
+    },
 
+    omdbImdbSearch: async (data) => {
+        let res;
+
+        console.log(data);
+
+        try {
+            res = await fetch(`${movieSearchAPI.apiURL}/imdbSearch/${data}`, {
+                method: 'GET',
+                //body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+        } catch (error) {
+            // return undefined;
+            console.log(error);
+        }
+        const json = await res.json();
+        console.log(json)
+        return json;
+
+    }
 }

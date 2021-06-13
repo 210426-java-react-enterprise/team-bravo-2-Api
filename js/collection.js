@@ -13,10 +13,6 @@ const collectionInit = () => {
 
     const shouldNavigateAway = false;
 
-
-
-
-
     const renderCollections = async () => {
         //COLLECTION DISPLAY ELEMENTS
         // let collectionType = document.getElementById('collectionType');
@@ -165,7 +161,6 @@ const collectionInit = () => {
     })
 
     addItemButton.addEventListener('click', function (event) {
-        console.log('click')
         collectionTypeContainer.classList.add('d-none');
         searchItemContainer.classList.remove('d-none');
     })
