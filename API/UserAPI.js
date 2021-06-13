@@ -30,8 +30,9 @@ const userAPI = {
         } catch (error) {
             console.log(error);
         }
-
-        sessionStorage.setItem('JWT', res.headers.get("Authorization"));
+        if (res.status !== 500) {
+            sessionStorage.setItem('JWT', res.headers.get("Authorization"));
+        }
 
         const json = await res.json();
         return json;
