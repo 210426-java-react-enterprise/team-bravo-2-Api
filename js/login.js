@@ -32,9 +32,11 @@ const initLogin = () => {
 
         if (user.status === 500) {
             alert("You entered invalid credentials.")
+            return;
         }
         if (user.id) {
 
+            sessionStorage.setItem('authUser', JSON.stringify(user));
             loginContainer.classList.add('d-none')
             collectionTypeContainer.classList.remove('d-none');
         }

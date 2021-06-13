@@ -1,9 +1,10 @@
-const userAPI = {
+const itemAPI = {
 
     apiURL: 'http://localhost:5000',
 
 
     createItem: async (data) => {
+        console.log(data);
         let res;
 
         try {

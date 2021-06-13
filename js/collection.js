@@ -4,48 +4,54 @@ const collectionInit = () => {
     const collectionTypeDesc = document.getElementById("collection-type-description");
     const collectionTypeName = document.getElementById('collection-type-name');
     const collectionTypeSubmit = document.getElementById("collection-type-submit");
+    const addItemBack = document.getElementById('addItemBack');
+    const loadCollections = document.getElementById('loadCollections');
 
     //CONTAINERS ELEMENTS
     const collectionTypeContainer = document.getElementById('collectionTypeContainer');
     const collectionItemContainer = document.getElementById('collectionItemContainer');
+    const searchItemContainer = document.getElementById('searchItemContainer');
+
 
     const shouldNavigateAway = false;
 
-
-
-
-
     const renderCollections = async () => {
-        //COLLECTION DISPLAY ELEMENTS
-        // let collectionType = document.getElementById('collectionType');
-        // let collectionName = document.getElementById('collectionName');
-        // let collectionDescription = document.getElementById('collectionDescrip');
-        let collectionsContainer = document.getElementById('collectionsContainer');
 
+        const collectionsAPI = await collectionAPI.getAllCollectionByID();
+        sessionStorage.setItem('collections', JSON.stringify(collectionsAPI));
 
-        const collections = await collectionAPI.getAllCollectionByID();
-        // collectionItemContainer.classList.remove('d-none');
-        console.log(collections)
-        // console.log(collectionTypeRender)
+        let collections;
+
+        !sessionStorage.collections ? collections = collectionsAPI : collections = JSON.parse(sessionStorage.collections);
+
         //RENDER COLLECTION NAMES
         for (const [index, collection] of Object.entries(collections)) {
-            console.log(index, collection)
-            // collectionType.innerText = collection.collType.mediumType;
-            // collectionDescription.innerText = collection.collectionDescrip;
-            // collectionName.innerText = collection.collectionName;
-
 
             let collectiionTypeHTML = `<div class="card collection-card-container mt-3" style="width: 100%">
                                 <div class="card-body collection-card-body" >
                                 <h2 class="card-title" id="collectionName">${collection.collectionName}</h2>
                                 <h5 class="card-title" id="collectionType">Type: ${collection.collType.mediumType}</h5>
                                 <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
-                                <a href="#" class="btn btn-danger" id="deleteItem">Delete</a>
+                                <div class="collection-form-buttons">
+                                    <button type="button" class="btn btn-success m-3 addItemButton" value='${collection}''>Add Item</button>
+                                    <button type="button" class="btn btn-danger m-3" value='${collection.id}' id='deleteCollectionButon'>Delete</button>
+                                </div>
                                 <div class='collection-card-container mt-3' id='collectionCard${collection.account.id}'></div>
                                 </div>`
 
-            collectionsContainer.innerHTML = collectiionTypeHTML;
-            console.log(collection.movieCollections)
+            collectionsContainer.innerHTML += collectiionTypeHTML;
+
+            let addItemButton = document.getElementsByClassName('addItemButton');
+
+            for (let i = 0; i < addItemButton.length; i++) {
+                addItemButton[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    searchItemContainer.classList.remove('d-none');
+                    collectionTypeContainer.classList.add('d-none');
+
+                })
+            }
 
             let moveiArr = collection.movieCollections;
 
@@ -67,20 +73,15 @@ const collectionInit = () => {
                                         <h5 class="card-title">For Trade: ${item.tradable}</h5>
                                         <p class="card-title">User Description: ${item.userDescrip}</p>
                                         <h5 class="card-title">User Rating: ${item.userRating}</h5>
-                                        <a href="#" class="btn btn-success">Save</a>
+                                        <button type="button" class="btn btn-danger m-3" id='deleteItemButton'>Delete</button>
+
                                         </div>
                                     </div>`
 
                 let collectionCard = document.getElementById(`collectionCard${collection.account.id}`);
                 collectionCard.innerHTML += collectionItemHTML
             }
-
         }
-
-
-        // collectionType.innerText = collections.collType.mediumType;
-
-
     }
     renderCollections();
 
@@ -127,21 +128,21 @@ const collectionInit = () => {
                 "mediumType": collectionType.value
             },
             "collectionName": collectionTypeName.value.trim(),
-            "collectionDescrip": collectionTypeDesc.value
+            "collectionDescrip": collectionTypeDesc.value.trim()
         };
 
-        // let collection = await collectionAPI.addCollection(collectionTypeData);
+        let collection = await collectionAPI.addCollection(collectionTypeData);
 
-        // if (collecion.status === 500) {
-        //     alert("Collection creation failed.")
-        // }
-        // if (collection.id) {
+        if (collection.status === 500) {
+            alert("Collection creation failed.")
+        }
+        if (collection.id) {
 
-        // sessionStorage.setItem('userCollections', collection);
+            sessionStorage.setItem('userCollections', collection);
 
-        collectionTypeContainer.classList.add('d-none');
-        collectionItemContainer.classList.remove('d-none')
-        // }
+            collectionTypeContainer.classList.add('d-none');
+            collectionItemContainer.classList.remove('d-none')
+        }
 
 
     }
@@ -156,6 +157,18 @@ const collectionInit = () => {
     }
 
     //EVENT LISTENERS
+
+    addItemBack.addEventListener('click', function (event) {
+        collectionTypeContainer.classList.remove('d-none');
+        searchItemContainer.classList.add('d-none');
+    })
+
+    loadCollections.addEventListener('click', async function (event) {
+        const collectionsAPI = await collectionAPI.getAllCollectionByID();
+        sessionStorage.setItem('collections', JSON.stringify(collectionsAPI));
+        location.reload();
+
+    })
 
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 

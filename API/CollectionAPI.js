@@ -34,10 +34,9 @@ const collectionAPI = {
         try {
             res = await fetch(`${collectionAPI.localURL}/collection/getInfoByID`, {
                 method: 'GET',
-                // body: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': collectionAPI.JWT
+                    'Authorization': sessionStorage.JWT
 
                 },
             })
@@ -54,6 +53,8 @@ const collectionAPI = {
 
     addCollection: async (data) => {
 
+        console.log(data);
+
         let res;
 
         try {
@@ -69,42 +70,7 @@ const collectionAPI = {
         const json = await res.json();
         return json;
 
-        ///to create cool info type object
-        //account json object => from local storage
-        //collection type object
-
-        /*
-              {  
-                "account": {
-                    "id": 1,
-                    "username": "test",
-                    "email": "tester@test.org"
-                },
-                "collType": {
-                    "id": 1,
-                    "mediumType": "movies"
-                },
-                "collectionName": "test collection",
-                "collectionDescrip": "test"
-            }
-
-            {  
-    "account": {
-        "id": 3,
-        "username": "jackjack",
-        "email": "jack@dog.com"
-        },
-    "collType": {
-        "id": 1,
-        "mediumType": "movies"
-        },
-    "collectionName": "test collection",
-    "collectionDescrip": "test"
-}
-        */
     },
-
-
 }
 
 

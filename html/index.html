@@ -90,8 +90,8 @@
   <!-- CREATE COLLECTION FORM -->
   <div class="container" id="collectionTypeContainer">
     <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
         <form id="collection-type-form">
           <div class="collection-form-title">
             <h2 id="xyz">Create a New Collection</h2>
@@ -99,9 +99,6 @@
 
           <select class="form-select" id="collection-type">
             <option disabled selected>Select a Collection Type</option>
-            <!-- <option value="movies">Movies</option> -->
-            <!-- <option value="">Vinyl</option>
-            <option>Books</option> -->
           </select>
 
           <div class="form-group">
@@ -124,26 +121,36 @@
           </div>
           <div>
 
-            <!-- DISPLAY COLLECTION CONTAINDER -->
+            <hr>
 
-            <div id="collectionsContainer"></div>
+            <div class='titles'>
+              <h1>Collections</h1>
+              <div class="collection-form-buttons">
+                <button type="button" class="btn btn-success submit" id="loadCollections">Load Collections!</button>
 
+              </div>
 
+              <!-- <div class="collection-form-buttons">
+              <button type="button" class="btn btn-success m-3" id='addItemButton'>Add Item</button>
+              <button type="button" class="btn btn-danger m-3" id='deleteCollectionButon'>Delete</button>
+            </div> -->
+
+              <!-- DISPLAY COLLECTION CONTAINDER -->
+
+              <div id="collectionsContainer"></div>
+            </div>
           </div>
+        </form>
       </div>
-      </form>
-
-
+      <div class="col-md-1"></div>
     </div>
-    <div class="col-md-3"></div>
-  </div>
   </div>
 
-                                <!-- 3RD PARTY SEARCH ITEM -->
+  <!-- 3RD PARTY SEARCH ITEM -->
   <div class="container" id="searchItemContainer">
     <div class="row">
       <div class="col-md-2"></div>
-      <div class="col-md-8">
+      <div class="col-md-10">
         <form id="collection-search-form">
           <div class="collection-form-title">
             <h1>Search for an Item</h1>
@@ -155,12 +162,16 @@
           </div>
 
           <div class="collection-form-buttons">
+
             <button disabled type="submit" id='collectionSearchSubmit' class="btn btn-primary">
               Submit
             </button>
             <button type="reset" class="btn btn-secondary">Clear</button>
+            <button type="submit" class="btn btn-success" id="searchItemBack">
+              Back
+            </button>
           </div>
-          
+
           <div class="search-results-container" id='collectionSearchContainer'></div>
         </form>
       </div>
@@ -169,6 +180,7 @@
   </div>
 
   <!-- ADD COLLECTIN ITEM FORM -->
+
   <div class="container" id="collectionItemContainer">
     <div class="row">
       <div class="col-md-3"></div>
@@ -221,10 +233,14 @@
           </div>
 
           <div class="collection-form-buttons">
+
             <button disabled type="submit" class="btn btn-primary" id="collectionItemSubmit">
               Submit
             </button>
             <button type="reset" class="btn btn-secondary">Clear</button>
+            <button type="submit" class="btn btn-success" id="addItemBack">
+              Back
+            </button>
           </div>
         </form>
       </div>
@@ -235,6 +251,7 @@
 
 
   <!-- REGISTER CONTAINER -->
+
   <div class="container" id="registerContainer">
     <div class="row">
       <div class="col-md-3"></div>
@@ -289,6 +306,7 @@
   <script src="../js/landing.js"></script>
 
   <script src="../API/CollectionAPI.js"></script>
+  <script src='../API//ItemAPI.js'></script>
   <script src="../js/collection.js"></script>
   <script src="../js/item.js"></script>
 

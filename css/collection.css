@@ -16,6 +16,11 @@ h5 {
   color: rgb(66, 65, 65);
 }
 
+hr {
+  /* border-width: 5px;
+  color: black; */
+}
+
 html,
 body {
   height: 100%;
@@ -25,6 +30,10 @@ body {
 
 body {
   font-family: "Roboto", sans-serif, Geneva, Verdana, sans-serif;
+}
+
+.titles {
+  text-align: center;
 }
 
 #collection-type-form {
@@ -93,8 +102,9 @@ label {
 .item-card-body {
   border: 2px solid rgb(151, 147, 147);
   border: 2px solid rgb(151, 147, 147);
-  width: 40%;
+  width: 50%;
+  max-width: 300px;
   /* background-color: aquamarine; */
   float: left;
-  margin-bottom: 20px;
+  margin: 0 10px 20px 10px;
 }
