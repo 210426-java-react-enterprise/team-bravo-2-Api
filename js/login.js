@@ -35,11 +35,11 @@ const initLogin = () => {
             alert("You entered invalid credentials.")
             return;
         }
-        // if (user.id) {
-        sessionStorage.setItem('authUser', JSON.stringify(user));
-        loginContainer.classList.add('d-none')
-        collectionTypeContainer.classList.remove('d-none');
-        // }
+        if (user.id && sessionStorage.JWT !== null) {
+            sessionStorage.setItem('authUser', JSON.stringify(user));
+            loginContainer.classList.add('d-none')
+            collectionTypeContainer.classList.remove('d-none');
+        }
 
     }
 
