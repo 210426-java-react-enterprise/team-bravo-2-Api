@@ -15,7 +15,7 @@ import static org.springframework.http.MediaType.*;
 //https://www.geeksforgeeks.org/how-to-create-a-rest-api-using-java-spring-boot/
 
 /**
- * The Controller creates end points.
+ * This class should be deprecated, as it's utilized in the API.
  */
 @RestController
 @RequestMapping(path = "/movie")
