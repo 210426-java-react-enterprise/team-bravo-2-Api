@@ -50,7 +50,6 @@ const omdbSearchInit = () => {
     }
 
     const validateInputs = () => {
-        // console.log('in validate')
         let isValid = true;
 
         if (!movieTitle.value.trim()) isValid = false;

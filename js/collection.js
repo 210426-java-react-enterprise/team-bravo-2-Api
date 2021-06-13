@@ -170,11 +170,6 @@ const collectionInit = () => {
 
     })
 
-    // addItemButton.addEventListener('click', function (event) {
-    //     collectionTypeContainer.classList.add('d-none');
-    //     searchItemContainer.classList.remove('d-none');
-    // })
-
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 
     collectionTypeSubmit.addEventListener('click', function (event) {
