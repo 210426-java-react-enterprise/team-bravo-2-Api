@@ -51,6 +51,31 @@ const handleCollectionItemSubmit = async (event) => {
     collectionItemData.userComment = collectionItemUserComment.value; //must be trim if optional input?
     collectionItemData.userTradeable = collectionItemTradeable.checked ? collectionItemTradeable.value = 1 : collectionItemOwned.value = 0;
 
+
+
+    // {
+    //     "collInfo":{
+    //         "id": 20,
+    //             "account":{
+    //             "id":4,
+    //             "username":"ann"
+    //             },
+    //             "collType":{
+    //             "id":1,
+    //             "mediumType":"movies"
+    //             },
+    //     "collectionName":"Happy place!"
+    //     },
+    //     "movie":{
+    //         "id": 2
+    //     },
+    //     "owned": 0,
+    //     "watched": 1,
+    //     "user_rating": 10,
+    //     "tradeable": 0,
+    //     "user_comment": "New item added to collection! I love this film."
+    // }
+
     ///this is where route call would go
     itemAPI.createItem(collectionItemData);
 }
