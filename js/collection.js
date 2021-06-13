@@ -4,6 +4,8 @@ const collectionInit = () => {
     const collectionTypeDesc = document.getElementById("collection-type-description");
     const collectionTypeName = document.getElementById('collection-type-name');
     const collectionTypeSubmit = document.getElementById("collection-type-submit");
+    const addItemButton = document.getElementById('addItemButton');
+    const addItemBack = document.getElementById('addItemBack');
 
     //CONTAINERS ELEMENTS
     const collectionTypeContainer = document.getElementById('collectionTypeContainer');
@@ -40,7 +42,6 @@ const collectionInit = () => {
                                 <h2 class="card-title" id="collectionName">${collection.collectionName}</h2>
                                 <h5 class="card-title" id="collectionType">Type: ${collection.collType.mediumType}</h5>
                                 <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
-                                <a href="#" class="btn btn-danger" id="deleteItem">Delete</a>
                                 <div class='collection-card-container mt-3' id='collectionCard${collection.account.id}'></div>
                                 </div>`
 
@@ -67,7 +68,8 @@ const collectionInit = () => {
                                         <h5 class="card-title">For Trade: ${item.tradable}</h5>
                                         <p class="card-title">User Description: ${item.userDescrip}</p>
                                         <h5 class="card-title">User Rating: ${item.userRating}</h5>
-                                        <a href="#" class="btn btn-success">Save</a>
+                                        <button type="button" class="btn btn-danger m-3" id='deleteItemButton'>Delete</button>
+
                                         </div>
                                     </div>`
 
@@ -156,6 +158,17 @@ const collectionInit = () => {
     }
 
     //EVENT LISTENERS
+
+    addItemBack.addEventListener('click', function (event) {
+        collectionTypeContainer.classList.remove('d-none');
+        searchItemContainer.classList.add('d-none');
+    })
+
+    addItemButton.addEventListener('click', function (event) {
+        console.log('click')
+        collectionTypeContainer.classList.add('d-none');
+        searchItemContainer.classList.remove('d-none');
+    })
 
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 

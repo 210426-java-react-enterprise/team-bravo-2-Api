@@ -1,8 +1,10 @@
 const omdbSearchInit = () => {
     ///COLLECTION TYPE FORM INPUTS
     const movieTitle = document.getElementById('collectionItemSearch');
-
     const collectionSearchSubmit = document.getElementById("collectionSearchSubmit");
+    const searchItemBack = document.getElementById('searchItemBack');
+
+
     const shouldNavigateAway = false;
 
     const handleCollectionTypeSubmit = async (event) => {
@@ -46,6 +48,11 @@ const omdbSearchInit = () => {
     }
 
     //EVENT LISTENERS
+
+    searchItemBack.addEventListener('click', function (event) {
+        collectionTypeContainer.classList.remove('d-none');
+        searchItemContainer.classList.add('d-none');
+    })
 
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 
