@@ -31,6 +31,7 @@ const collectionInit = () => {
         for (const [index, collection] of Object.entries(collections)) {
             console.log(index, collection)
 
+
             let collectiionTypeHTML = `<div class="card collection-card-container mt-3" style="width: 100%">
                                 <div class="card-body collection-card-body" >
                                 <h2 class="card-title" id="collectionName">${collection.collectionName}</h2>
