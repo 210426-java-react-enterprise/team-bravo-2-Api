@@ -36,7 +36,7 @@ const collectionInit = () => {
 
 
             let collectiionTypeHTML = `<div class="card collection-card-container mt-3" style="width: 100%">
-                                <div class="card-body collection-body" style="text-align: center">
+                                <div class="card-body collection-card-body" >
                                 <h2 class="card-title" id="collectionName">${collection.collectionName}</h2>
                                 <h5 class="card-title" id="collectionType">Type: ${collection.collType.mediumType}</h5>
                                 <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>

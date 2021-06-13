@@ -69,9 +69,12 @@ label {
 .d-none {
   display: none;
 }
-
-#collectionsContainer {
-}
+/* 
+.collection-card-body {
+  style="text-align: center"
+  background-color: aqua;
+  border: 3px solid black;
+} */
 
 /* ITEM/COLLECTION CARD DISPLAY */
 .collection-card-container {
@@ -79,6 +82,7 @@ label {
   text-align: center;
   flex-flow: row wrap;
   display: inline-flex;
+  /* border: 3px solid black; */
   /* background-color: aquamarine; */
   justify-content: space-evenly;
   /* text-align: center; */
