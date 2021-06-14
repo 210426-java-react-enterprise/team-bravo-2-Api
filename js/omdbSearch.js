@@ -15,7 +15,7 @@ const omdbSearchInit = () => {
 
         console.log(searchTerm)
 
-        let searchResults = await movieSearchAPI.omdbMultiSearch(searchTerm);
+        let searchResults = await movieSearchAPI1.omdbMultiSearch(searchTerm);
 
         if (searchResults.status === 500) {
             alert('No results!')
