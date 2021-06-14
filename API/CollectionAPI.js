@@ -1,6 +1,6 @@
 const collectionAPI = {
 
-    localURL: 'http://localhost:5000',
+    localURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
 
     JWT: sessionStorage.JWT,
 

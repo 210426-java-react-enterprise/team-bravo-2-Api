@@ -1,6 +1,6 @@
 const itemAPI = {
 
-    apiURL: 'http://localhost:5000',
+    apiURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
 
 
     createItem: async (data) => {
