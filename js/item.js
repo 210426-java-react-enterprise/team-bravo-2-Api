@@ -35,22 +35,37 @@ const handleCollectionItemSubmit = async (event) => {
 
     let collectionItemData = {};
 
-    let { title, year, prodCompany, mpaaRating, lengthMin, genre, description } = JSON.parse(sessionStorage.movieReturn);
+    let { id } = JSON.parse(sessionStorage.movieReturn);
 
-    collectionItemData.title = title;
-    collectionItemData.year = year;
-    collectionItemData.prodCompany = prodCompany;
-    collectionItemData.mpaaRating = mpaaRating;
-    collectionItemData.lengthMin = lengthMin;
-    collectionItemData.genre = genre;
-    collectionItemData.description = description;
+    // collectionItemData.title = title;
+    // collectionItemData.year = year;
+    // collectionItemData.prodCompany = prodCompany;
+    // collectionItemData.mpaaRating = mpaaRating;
+    // collectionItemData.lengthMin = lengthMin;
+    // collectionItemData.genre = genre;
+    // collectionItemData.description = description;
 
+    collectionItemData.collectionInfoId = sessionStorage.collectionId;
+    collectionItemData.movieID = id;
     collectionItemData.owned = collectionItemOwned.checked ? collectionItemOwned.value = 1 : collectionItemOwned.value = 0;
     collectionItemData.watched = collectionItemWatched.checked ? collectionItemWatched.value = 1 : collectionItemOwned.value = 0;
     collectionItemData.userRating = parseInt(collectionItemUserRating.value);
-    collectionItemData.userComment = collectionItemUserComment.value; //must be trim if optional input?
-    collectionItemData.userTradeable = collectionItemTradeable.checked ? collectionItemTradeable.value = 1 : collectionItemOwned.value = 0;
+    collectionItemData.tradable = collectionItemTradeable.checked ? collectionItemTradeable.value = 1 : collectionItemOwned.value = 0;
+    collectionItemData.userDescrip = collectionItemUserComment.value; //must be trim if optional input?
 
+    itemAPI.createItem(collectionItemData);
+
+    location.reload();
+
+    // {
+    //     "collectionInfoId":1,
+    //     "movieID":2,
+    //     "owned": 0,
+    //     "watched": 1,
+    //     "userRating": 10,
+    //     "tradable": 0,
+    //     "userDescrip": "This works and loks nice"
+    // }
 
 
     // {
@@ -77,7 +92,7 @@ const handleCollectionItemSubmit = async (event) => {
     // }
 
     ///this is where route call would go
-    itemAPI.createItem(collectionItemData);
+
 }
 
 

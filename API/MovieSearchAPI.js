@@ -1,6 +1,6 @@
 const movieSearchAPI = {
 
-    apiURL: 'http://localhost:5000/omdb',
+    apiURL: 'http://localhost:5000',
 
 
     omdbMultiSearch: async (data) => {
@@ -9,7 +9,7 @@ const movieSearchAPI = {
         console.log(data);
 
         try {
-            res = await fetch(`${movieSearchAPI.apiURL}/multiSearch/${data}`, {
+            res = await fetch(`${movieSearchAPI.apiURL}/omdb/multiSearch/${data}`, {
                 method: 'GET',
                 //body: JSON.stringify(data),
                 headers: {
@@ -35,7 +35,7 @@ const movieSearchAPI = {
         console.log(data);
 
         try {
-            res = await fetch(`${movieSearchAPI.apiURL}/imdbSearch/${data}`, {
+            res = await fetch(`${movieSearchAPI.apiURL}/omdb/imdbSearch/${data}`, {
                 method: 'GET',
                 //body: JSON.stringify(data),
                 headers: {
@@ -49,5 +49,30 @@ const movieSearchAPI = {
         const json = await res.json();
         console.log(json)
         return json;
-    }
+    },
+
+
+    saveItem: async (data) => {
+        let res;
+
+        console.log(data);
+
+        try {
+            res = await fetch(`${movieSearchAPI.apiURL}/movie/save`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+        } catch (error) {
+            // return undefined;
+            console.log(error);
+        }
+        const json = await res.json();
+        console.log(json)
+        return json;
+    },
+
+
 }

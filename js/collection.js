@@ -23,9 +23,11 @@ const collectionInit = () => {
         let collections;
 
         !sessionStorage.collections ? collections = collectionsAPI : collections = JSON.parse(sessionStorage.collections);
-
+        console.log(collections);
         //RENDER COLLECTION NAMES
         for (const [index, collection] of Object.entries(collections)) {
+            console.log(index, collection)
+
 
             let collectiionTypeHTML = `<div class="card collection-card-container mt-3" style="width: 100%">
                                 <div class="card-body collection-card-body" >
@@ -36,7 +38,7 @@ const collectionInit = () => {
                                     <button type="button" class="btn btn-success m-3 addItemButton" value='${collection}''>Add Item</button>
                                     <button type="button" class="btn btn-danger m-3" value='${collection.id}' id='deleteCollectionButon'>Delete</button>
                                 </div>
-                                <div class='collection-card-container mt-3' id='collectionCard${collection.account.id}'></div>
+                                <div class='collection-card-container mt-3' id='collectionCard${collection.id}'></div>
                                 </div>`
 
             collectionsContainer.innerHTML += collectiionTypeHTML;
@@ -44,8 +46,12 @@ const collectionInit = () => {
             let addItemButton = document.getElementsByClassName('addItemButton');
 
             for (let i = 0; i < addItemButton.length; i++) {
+                addItemButton.value = collections[i].id;
+
                 addItemButton[i].addEventListener('click', function (event) {
                     event.preventDefault();
+
+                    sessionStorage.setItem(`collectionId`, collections[i].id);
 
                     searchItemContainer.classList.remove('d-none');
                     collectionTypeContainer.classList.add('d-none');
@@ -56,12 +62,13 @@ const collectionInit = () => {
             let moveiArr = collection.movieCollections;
 
             for (item of moveiArr) {
+                console.log(item)
                 item.owned = 1 ? item.owned = "Yes" : item.ownd = "No";
                 item.tradable = 1 ? item.tradable = "Yes" : item.tradable = "No";
                 item.watched = 1 ? item.watched = "Yes" : item.watched = "No";
 
                 let collectionItemHTML = `<div class="card item-card-body" id='${item.movie.id}'">
-                                        <img src="..." class="card-img-top" alt="...">
+                                        <img src="${item.movie.imgUrl}" class="card-img-top" alt="...">
                                         <div class="card-body">
                                         <h4 class="card-title">${item.movie.title}</h4>
                                         <h5 class="card-title">${item.movie.year}</h5>
@@ -77,8 +84,10 @@ const collectionInit = () => {
 
                                         </div>
                                     </div>`
+                console.log(index, collection.id)
 
-                let collectionCard = document.getElementById(`collectionCard${collection.account.id}`);
+
+                let collectionCard = document.getElementById(`collectionCard${collection.id}`);
                 collectionCard.innerHTML += collectionItemHTML
             }
         }
@@ -138,11 +147,13 @@ const collectionInit = () => {
         }
         if (collection.id) {
 
-            sessionStorage.setItem('userCollections', collection);
+            sessionStorage.setItem('userCollections', JSON.stringify(collection));
 
-            collectionTypeContainer.classList.add('d-none');
-            collectionItemContainer.classList.remove('d-none')
+            // collectionTypeContainer.classList.add('d-none');
+            // collectionItemContainer.classList.remove('d-none')
         }
+
+        location.reload();
 
 
     }

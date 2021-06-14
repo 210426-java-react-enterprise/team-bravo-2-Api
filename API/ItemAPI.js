@@ -20,10 +20,6 @@ const itemAPI = {
         }
         const json = await res.json();
         return json;
-
-
-        // .then((res) => res.json())
-        // .then((data) => console.log(data));
     },
 
     getAllItems: async (data) => {

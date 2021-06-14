@@ -41,7 +41,10 @@ const omdbSearchInit = () => {
             addAPIItem[i].addEventListener('click', async function (event) {
                 event.preventDefault();
                 let movieReturn = await movieSearchAPI.omdbImdbSearch(addAPIItem[i].value)
+                console.log(movieReturn);
                 sessionStorage.setItem('movieReturn', JSON.stringify(movieReturn));
+                let dbMovieReturn = await movieSearchAPI.saveItem(JSON.parse(sessionStorage.movieReturn));
+                sessionStorage.setItem('movieReturn', JSON.stringify(dbMovieReturn));
 
                 searchItemContainer.classList.add('d-none');
                 collectionItemContainer.classList.remove('d-none');
