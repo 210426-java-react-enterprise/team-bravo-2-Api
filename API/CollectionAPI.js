@@ -19,7 +19,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collectionType/getAll`);
+            res = await fetch(`${collectionAPI.localURL}/collectionType/get-all`);
         } catch (error) {
             console.log(error);
         }
@@ -32,7 +32,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collection/getInfoByID`, {
+            res = await fetch(`${collectionAPI.localURL}/collection/get-info-by-id`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +41,6 @@ const collectionAPI = {
                 },
             })
         } catch (error) {
-            // return undefined;
             console.log(error);
         }
 
@@ -70,6 +69,21 @@ const collectionAPI = {
         const json = await res.json();
         return json;
 
+    },
+    deleteCollection: async (data) => {
+
+        console.log(data);
+
+        let res;
+
+        try {
+            res = await fetch(`${collectionAPI.localURL}/collection/delete/${data}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' }
+            });
+        } catch (error) {
+            console.log(error)
+        }
     },
 }
 

@@ -53,7 +53,6 @@ const userAPI = {
         }
 
         const json = await res.json();
-        return json;
     }
 }
 
