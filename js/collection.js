@@ -36,7 +36,7 @@ const collectionInit = () => {
                                 <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
                                 <div class="collection-form-buttons">
                                     <button type="button" class="btn btn-success m-3 addItemButton" value='${collection}''>Add Item</button>
-                                    <button type="button" class="btn btn-danger m-3" value='${collection.id}' id='deleteCollectionButon'>Delete</button>
+                                    <button type="button" class="btn btn-danger m-3 deleteCollectionButon" value='${collection.id}'>Delete</button>
                                 </div>
                                 <div class='collection-card-container mt-3' id='collectionCard${collection.id}'></div>
                                 </div>`
@@ -80,15 +80,29 @@ const collectionInit = () => {
                                         <h5 class="card-title">For Trade: ${item.tradable}</h5>
                                         <p class="card-title">User Description: ${item.userDescrip}</p>
                                         <h5 class="card-title">User Rating: ${item.userRating}</h5>
-                                        <button type="button" class="btn btn-danger m-3" id='deleteItemButton'>Delete</button>
+                                        <button type="button" class="btn btn-danger deleteItemButton m-3" value=${item.id}>Delete</button>
 
                                         </div>
                                     </div>`
-                console.log(index, collection.id)
+
 
 
                 let collectionCard = document.getElementById(`collectionCard${collection.id}`);
                 collectionCard.innerHTML += collectionItemHTML
+            }
+
+            let deleteItemButton = document.getElementsByClassName('deleteItemButton');
+            console.log(deleteItemButton)
+            for (let i = 0; i < deleteItemButton.length; i++) {
+
+                deleteItemButton[i].addEventListener('click', async function (event) {
+                    event.preventDefault();
+                    // console.log('click', deleteItemButton[i].value);
+                    let deletedItem = await itemAPI.deleteItem(deleteItemButton[i].value);
+                    let collectionsUpdate = await collectionAPI.getAllCollectionByID();
+                    sessionStorage.setItem('collections', JSON.stringify(collectionsUpdate))
+                    location.reload();
+                })
             }
         }
     }
