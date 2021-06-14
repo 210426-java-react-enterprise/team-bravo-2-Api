@@ -62,9 +62,6 @@ const handleCollectionItemSubmit = async (event) => {
 const validateItemInputs = () => {
     let isValid = true;
 
-    // if (!collectionItemOwned.checked) isValid = false;
-    // if (!collectionItemWatched.checked) isValid = false;
-
     isValid ? collectionItemSubmit.removeAttribute('disabled') : collectionItemSubmit.setAttribute('disabled', true);
 }
 

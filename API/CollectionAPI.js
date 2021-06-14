@@ -41,7 +41,6 @@ const collectionAPI = {
                 },
             })
         } catch (error) {
-            // return undefined;
             console.log(error);
         }
 
