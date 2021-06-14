@@ -8,6 +8,8 @@ const initLanding = () => {
     const collectionItemContainer = document.getElementById('collectionItemContainer');
     const searchItemContainer = document.getElementById('searchItemContainer');
 
+    sessionStorage.setItem('updateItemId', 0)
+
     if (sessionStorage.JWT) {
         landingContainer.classList.add("d-none");
         loginContainer.classList.add('d-none');

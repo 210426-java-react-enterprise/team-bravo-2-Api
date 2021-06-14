@@ -1,4 +1,4 @@
-const movieSearchAPI1 = {
+const movieSearchAPI = {
 
     apiURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
 
