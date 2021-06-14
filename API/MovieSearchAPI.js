@@ -9,7 +9,7 @@ const movieSearchAPI = {
         console.log(data);
 
         try {
-            res = await fetch(`${movieSearchAPI.apiURL}/omdb/multiSearch/${data}`, {
+            res = await fetch(`${movieSearchAPI.apiURL}/omdb/multi-search/${data}`, {
                 method: 'GET',
                 //body: JSON.stringify(data),
                 headers: {
@@ -34,7 +34,7 @@ const movieSearchAPI = {
         console.log(data);
 
         try {
-            res = await fetch(`${movieSearchAPI.apiURL}/omdb/imdbSearch/${data}`, {
+            res = await fetch(`${movieSearchAPI.apiURL}/omdb/imdb-search/${data}`, {
                 method: 'GET',
                 //body: JSON.stringify(data),
                 headers: {

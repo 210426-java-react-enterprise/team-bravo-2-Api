@@ -85,10 +85,6 @@ const collectionAPI = {
         } catch (error) {
             console.log(error)
         }
-
-        // const json = await res.json();
-        // return json;
-
     },
 }
 

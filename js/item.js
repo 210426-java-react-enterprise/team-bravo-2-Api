@@ -32,8 +32,6 @@ const handleCollectionItemSubmit = async (event) => {
 
     let collectionItemData = {};
 
-    console.log('sfsd', parseInt(sessionStorage.updateItemId))
-
     let { id } = JSON.parse(sessionStorage.movieReturn);
     let itemMethod = 'createItem';
     if (parseInt(sessionStorage.updateItemId) > 0) {
