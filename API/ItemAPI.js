@@ -64,7 +64,7 @@ const itemAPI = {
         let res;
         try {
             res = await fetch(`${userAPI.apiURL}/movieCollections/updateById`, {
-                method: 'POST',
+                method: 'POST',//PUT?????
                 body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" }
             })

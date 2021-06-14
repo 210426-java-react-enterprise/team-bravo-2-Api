@@ -44,9 +44,18 @@ const collectionInit = () => {
             collectionsContainer.innerHTML += collectiionTypeHTML;
 
             let addItemButton = document.getElementsByClassName('addItemButton');
+            let deleteCollectionButon = document.getElementsByClassName('deleteCollectionButon');
 
             for (let i = 0; i < addItemButton.length; i++) {
-                addItemButton.value = collections[i].id;
+                deleteCollectionButon.value, addItemButton.value = collections[i].id;
+
+                deleteCollectionButon[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+                    console.log('click')
+                    collectionAPI.deleteCollection(deleteCollectionButon[i].value)
+                    location.reload();
+
+                })
 
                 addItemButton[i].addEventListener('click', function (event) {
                     event.preventDefault();
@@ -62,7 +71,6 @@ const collectionInit = () => {
             let moveiArr = collection.movieCollections;
 
             for (item of moveiArr) {
-                console.log(item)
                 item.owned = 1 ? item.owned = "Yes" : item.ownd = "No";
                 item.tradable = 1 ? item.tradable = "Yes" : item.tradable = "No";
                 item.watched = 1 ? item.watched = "Yes" : item.watched = "No";
@@ -80,8 +88,10 @@ const collectionInit = () => {
                                         <h5 class="card-title">For Trade: ${item.tradable}</h5>
                                         <p class="card-title">User Description: ${item.userDescrip}</p>
                                         <h5 class="card-title">User Rating: ${item.userRating}</h5>
+                                        <div class="collection-form-buttons">
+                                        <button type="button" class="btn btn-success updateItemButton m-3" value=${item.id}>Update</button>                                    
                                         <button type="button" class="btn btn-danger deleteItemButton m-3" value=${item.id}>Delete</button>
-
+                                        </div>
                                         </div>
                                     </div>`
 
@@ -92,7 +102,6 @@ const collectionInit = () => {
             }
 
             let deleteItemButton = document.getElementsByClassName('deleteItemButton');
-            console.log(deleteItemButton)
             for (let i = 0; i < deleteItemButton.length; i++) {
 
                 deleteItemButton[i].addEventListener('click', async function (event) {

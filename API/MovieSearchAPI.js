@@ -17,7 +17,6 @@ const movieSearchAPI = {
                 },
             })
         } catch (error) {
-            alert('No results!')
             console.log(error);
         }
         const json = await res.json();

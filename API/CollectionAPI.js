@@ -71,6 +71,25 @@ const collectionAPI = {
         return json;
 
     },
+    deleteCollection: async (data) => {
+
+        console.log(data);
+
+        let res;
+
+        try {
+            res = await fetch(`${collectionAPI.localURL}/collection/delete/${data}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' }
+            });
+        } catch (error) {
+            console.log(error)
+        }
+
+        // const json = await res.json();
+        // return json;
+
+    },
 }
 
 
