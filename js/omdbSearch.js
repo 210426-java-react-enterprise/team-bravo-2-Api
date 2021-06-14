@@ -13,6 +13,8 @@ const omdbSearchInit = () => {
 
         let searchTerm = movieTitle.value.trim().replaceAll(" ", "+");
 
+        console.log(searchTerm)
+
         let searchResults = await movieSearchAPI.omdbMultiSearch(searchTerm);
 
         if (searchResults.status === 500) {

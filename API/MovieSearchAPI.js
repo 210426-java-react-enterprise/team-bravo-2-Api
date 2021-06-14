@@ -20,12 +20,7 @@ const movieSearchAPI = {
             console.log(error);
         }
         const json = await res.json();
-        console.log(json)
         return json;
-
-
-        // .then((res) => res.json())
-        // .then((data) => console.log(data));
     },
 
     omdbImdbSearch: async (data) => {
@@ -45,7 +40,6 @@ const movieSearchAPI = {
             console.log(error);
         }
         const json = await res.json();
-        console.log(json)
         return json;
     },
 
@@ -68,9 +62,6 @@ const movieSearchAPI = {
             console.log(error);
         }
         const json = await res.json();
-        console.log(json)
         return json;
-    },
-
-
+    }
 }
