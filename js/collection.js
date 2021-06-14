@@ -67,9 +67,9 @@ const collectionInit = () => {
             let moveiArr = collection.movieCollections;
 
             for (item of moveiArr) {
-                item.owned = 1 ? item.owned = "Yes" : item.ownd = "No";
-                item.tradable = 1 ? item.tradable = "Yes" : item.tradable = "No";
-                item.watched = 1 ? item.watched = "Yes" : item.watched = "No";
+                item.owned === 1 ? item.owned = "Yes" : item.owned = "No";
+                item.tradable === 1 ? item.tradable = "Yes" : item.tradable = "No";
+                item.watched === 1 ? item.watched = "Yes" : item.watched = "No";
 
                 let collectionItemHTML = `<div class="card item-card-body" id='${item.movie.id}'">
                                         <img src="${item.movie.imgUrl}" class="card-img-top" alt="...">
@@ -82,6 +82,7 @@ const collectionInit = () => {
                                         <p>${item.movie.description}</p>
                                         <h5 class="card-title">Owned: ${item.owned}</h5>
                                         <h5 class="card-title">For Trade: ${item.tradable}</h5>
+                                        <h5 class="card-title">Watched: ${item.watched}</h5>
                                         <p class="card-title">User Description: ${item.userDescrip}</p>
                                         <h5 class="card-title">User Rating: ${item.userRating}</h5>
                                         <div class="collection-form-buttons">
