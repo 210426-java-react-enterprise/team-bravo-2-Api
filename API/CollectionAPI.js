@@ -19,7 +19,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collectionType/getAll`);
+            res = await fetch(`${collectionAPI.localURL}/collectionType/get-all`);
         } catch (error) {
             console.log(error);
         }
@@ -32,7 +32,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collection/getInfoByID`, {
+            res = await fetch(`${collectionAPI.localURL}/collection/get-info-by-id`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

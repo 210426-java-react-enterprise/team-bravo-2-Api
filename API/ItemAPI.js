@@ -26,7 +26,7 @@ const itemAPI = {
 
         let res;
         try {
-            res = await fetch(`${userAPI.apiURL}/movieCollections/getAll`, {
+            res = await fetch(`${userAPI.apiURL}/movieCollections/get-all`, {
                 method: 'GET',
                 body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" }
@@ -42,7 +42,7 @@ const itemAPI = {
     getItem: async (data) => {
         let res;
         try {
-            res = await fetch('${userAPI.apiURL}/movieCollections/getById', {
+            res = await fetch('${userAPI.apiURL}/movieCollections/get-by-id', {
 
                 method: 'GET',
                 body: JSON.stringify(data),
