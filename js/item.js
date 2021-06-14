@@ -27,65 +27,40 @@ const collectionItemUserComment = document.getElementById('collectionItemUserCom
 const collectionItemTradeable = document.getElementById('collectionItemTradeable');
 const collectionItemSubmit = document.getElementById('collectionItemSubmit');
 
-
-// const shouldNavigateAway = false;
-
 const handleCollectionItemSubmit = async (event) => {
     event.preventDefault();
 
     let collectionItemData = {};
 
-    let { title, year, prodCompany, mpaaRating, lengthMin, genre, description } = JSON.parse(sessionStorage.movieReturn);
+    let { id } = JSON.parse(sessionStorage.movieReturn);
+    let itemMethod = 'createItem';
+    if (parseInt(sessionStorage.updateItemId) > 0) {
+        id = JSON.parse(sessionStorage.updateItemId);
+        itemMethod = 'updateItem';
+    }
 
-    collectionItemData.title = title;
-    collectionItemData.year = year;
-    collectionItemData.prodCompany = prodCompany;
-    collectionItemData.mpaaRating = mpaaRating;
-    collectionItemData.lengthMin = lengthMin;
-    collectionItemData.genre = genre;
-    collectionItemData.description = description;
-
+    collectionItemData.collectionInfoId = sessionStorage.collectionId;
+    collectionItemData.movieID = id;
     collectionItemData.owned = collectionItemOwned.checked ? collectionItemOwned.value = 1 : collectionItemOwned.value = 0;
     collectionItemData.watched = collectionItemWatched.checked ? collectionItemWatched.value = 1 : collectionItemOwned.value = 0;
     collectionItemData.userRating = parseInt(collectionItemUserRating.value);
-    collectionItemData.userComment = collectionItemUserComment.value; //must be trim if optional input?
-    collectionItemData.userTradeable = collectionItemTradeable.checked ? collectionItemTradeable.value = 1 : collectionItemOwned.value = 0;
+    collectionItemData.tradable = collectionItemTradeable.checked ? collectionItemTradeable.value = 1 : collectionItemOwned.value = 0;
+    collectionItemData.userDescrip = collectionItemUserComment.value; //must be trim if optional input?
 
+    if (JSON.parse(sessionStorage.updateItemId) > 0) {
+        itemAPI.updateItem(collectionItemData);
+    } else {
+        itemAPI.createItem(collectionItemData);
+    }
 
+    sessionStorage.setItem('updateItemId', 0);
 
-    // {
-    //     "collInfo":{
-    //         "id": 20,
-    //             "account":{
-    //             "id":4,
-    //             "username":"ann"
-    //             },
-    //             "collType":{
-    //             "id":1,
-    //             "mediumType":"movies"
-    //             },
-    //     "collectionName":"Happy place!"
-    //     },
-    //     "movie":{
-    //         "id": 2
-    //     },
-    //     "owned": 0,
-    //     "watched": 1,
-    //     "user_rating": 10,
-    //     "tradeable": 0,
-    //     "user_comment": "New item added to collection! I love this film."
-    // }
-
-    ///this is where route call would go
-    itemAPI.createItem(collectionItemData);
+    location.reload();
 }
 
 
 const validateItemInputs = () => {
     let isValid = true;
-
-    if (!collectionItemOwned.checked) isValid = false;
-    if (!collectionItemWatched.checked) isValid = false;
 
     isValid ? collectionItemSubmit.removeAttribute('disabled') : collectionItemSubmit.setAttribute('disabled', true);
 }
@@ -97,7 +72,6 @@ const validateItemInputs = () => {
 document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateItemInputs));
 
 collectionItemSubmit.addEventListener('click', function (event) {
-    // shouldNavigateAway;
     handleCollectionItemSubmit(event);
 });
 

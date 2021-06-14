@@ -1,6 +1,6 @@
 const itemAPI = {
 
-    apiURL: 'http://localhost:5000',
+    apiURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
 
 
     createItem: async (data) => {
@@ -20,17 +20,13 @@ const itemAPI = {
         }
         const json = await res.json();
         return json;
-
-
-        // .then((res) => res.json())
-        // .then((data) => console.log(data));
     },
 
     getAllItems: async (data) => {
 
         let res;
         try {
-            res = await fetch(`${userAPI.apiURL}/movieCollections/getAll`, {
+            res = await fetch(`${userAPI.apiURL}/movieCollections/get-all`, {
                 method: 'GET',
                 body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" }
@@ -46,7 +42,7 @@ const itemAPI = {
     getItem: async (data) => {
         let res;
         try {
-            res = await fetch('${userAPI.apiURL}/movieCollections/getById', {
+            res = await fetch('${userAPI.apiURL}/movieCollections/get-by-id', {
 
                 method: 'GET',
                 body: JSON.stringify(data),
@@ -64,11 +60,11 @@ const itemAPI = {
     },
 
     updateItem: async (data) => {
-
+        console.log('in update', data.movieID)
         let res;
         try {
-            res = await fetch(`${userAPI.apiURL}/movieCollections/updateById`, {
-                method: 'POST',
+            res = await fetch(`${userAPI.apiURL}/movieCollections/update/${data.movieID}`, {
+                method: 'PUT',
                 body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" }
             })
@@ -78,8 +74,21 @@ const itemAPI = {
 
         const json = await res.json();
         return json;
-    }
+    },
 
+    deleteItem: async (data) => {
+
+        let res;
+        try {
+            res = await fetch(`${userAPI.apiURL}/movieCollections/delete/${data}`, {
+                method: 'DELETE',
+                body: JSON.stringify(data),
+                headers: { "Content-Type": "application/json" }
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
 }
 
 

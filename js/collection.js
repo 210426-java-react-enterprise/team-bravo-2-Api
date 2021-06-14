@@ -23,7 +23,6 @@ const collectionInit = () => {
         let collections;
 
         !sessionStorage.collections ? collections = collectionsAPI : collections = JSON.parse(sessionStorage.collections);
-
         //RENDER COLLECTION NAMES
         for (const [index, collection] of Object.entries(collections)) {
 
@@ -34,18 +33,30 @@ const collectionInit = () => {
                                 <p class="card-text" id="collectionDescrip">${collection.collectionDescrip}</p>
                                 <div class="collection-form-buttons">
                                     <button type="button" class="btn btn-success m-3 addItemButton" value='${collection}''>Add Item</button>
-                                    <button type="button" class="btn btn-danger m-3" value='${collection.id}' id='deleteCollectionButon'>Delete</button>
+                                    <button type="button" class="btn btn-danger m-3 deleteCollectionButon" value='${collection.id}'>Delete</button>
                                 </div>
-                                <div class='collection-card-container mt-3' id='collectionCard${collection.account.id}'></div>
+                                <div class='collection-card-container mt-3' id='collectionCard${collection.id}'></div>
                                 </div>`
 
             collectionsContainer.innerHTML += collectiionTypeHTML;
 
             let addItemButton = document.getElementsByClassName('addItemButton');
+            let deleteCollectionButon = document.getElementsByClassName('deleteCollectionButon');
 
             for (let i = 0; i < addItemButton.length; i++) {
+                deleteCollectionButon.value, addItemButton.value = collections[i].id;
+
+                deleteCollectionButon[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+                    collectionAPI.deleteCollection(deleteCollectionButon[i].value)
+                    location.reload();
+
+                })
+
                 addItemButton[i].addEventListener('click', function (event) {
                     event.preventDefault();
+
+                    sessionStorage.setItem(`collectionId`, collections[i].id);
 
                     searchItemContainer.classList.remove('d-none');
                     collectionTypeContainer.classList.add('d-none');
@@ -56,12 +67,12 @@ const collectionInit = () => {
             let moveiArr = collection.movieCollections;
 
             for (item of moveiArr) {
-                item.owned = 1 ? item.owned = "Yes" : item.ownd = "No";
-                item.tradable = 1 ? item.tradable = "Yes" : item.tradable = "No";
-                item.watched = 1 ? item.watched = "Yes" : item.watched = "No";
+                item.owned === 1 ? item.owned = "Yes" : item.owned = "No";
+                item.tradable === 1 ? item.tradable = "Yes" : item.tradable = "No";
+                item.watched === 1 ? item.watched = "Yes" : item.watched = "No";
 
                 let collectionItemHTML = `<div class="card item-card-body" id='${item.movie.id}'">
-                                        <img src="..." class="card-img-top" alt="...">
+                                        <img src="${item.movie.imgUrl}" class="card-img-top" alt="...">
                                         <div class="card-body">
                                         <h4 class="card-title">${item.movie.title}</h4>
                                         <h5 class="card-title">${item.movie.year}</h5>
@@ -71,15 +82,40 @@ const collectionInit = () => {
                                         <p>${item.movie.description}</p>
                                         <h5 class="card-title">Owned: ${item.owned}</h5>
                                         <h5 class="card-title">For Trade: ${item.tradable}</h5>
+                                        <h5 class="card-title">Watched: ${item.watched}</h5>
                                         <p class="card-title">User Description: ${item.userDescrip}</p>
                                         <h5 class="card-title">User Rating: ${item.userRating}</h5>
-                                        <button type="button" class="btn btn-danger m-3" id='deleteItemButton'>Delete</button>
-
+                                        <div class="collection-form-buttons">
+                                        <button type="button" class="btn btn-success updateItemButton m-3" value=${item.id}>Update</button>                                    
+                                        <button type="button" class="btn btn-danger deleteItemButton m-3" value=${item.id}>Delete</button>
+                                        </div>
                                         </div>
                                     </div>`
 
-                let collectionCard = document.getElementById(`collectionCard${collection.account.id}`);
+
+                let collectionCard = document.getElementById(`collectionCard${collection.id}`);
                 collectionCard.innerHTML += collectionItemHTML
+            }
+
+            let deleteItemButton = document.getElementsByClassName('deleteItemButton');
+            let updateItemButton = document.getElementsByClassName('updateItemButton');
+            for (let i = 0; i < deleteItemButton.length; i++) {
+
+                updateItemButton[i].addEventListener('click', async function (event) {
+                    event.preventDefault();
+                    sessionStorage.setItem('updateItemId', updateItemButton[i].value)
+                    collectionItemContainer.classList.remove('d-none');
+                    collectionTypeContainer.classList.add('d-none');
+                })
+
+                deleteItemButton[i].addEventListener('click', async function (event) {
+                    event.preventDefault();
+                    // console.log('click', deleteItemButton[i].value);
+                    let deletedItem = await itemAPI.deleteItem(deleteItemButton[i].value);
+                    let collectionsUpdate = await collectionAPI.getAllCollectionByID();
+                    sessionStorage.setItem('collections', JSON.stringify(collectionsUpdate))
+                    location.reload();
+                })
             }
         }
     }
@@ -111,7 +147,6 @@ const collectionInit = () => {
 
         let mediumId;
         for (const [key, value] of Object.entries(collectionTypes)) {
-            console.log(value.id)
             if (value.mediumType === collectionType.value) {
                 mediumId = value.id;
             }
@@ -138,13 +173,10 @@ const collectionInit = () => {
         }
         if (collection.id) {
 
-            sessionStorage.setItem('userCollections', collection);
-
-            collectionTypeContainer.classList.add('d-none');
-            collectionItemContainer.classList.remove('d-none')
+            sessionStorage.setItem('userCollections', JSON.stringify(collection));
         }
 
-
+        location.reload();
     }
 
     const validateInputs = () => {
@@ -173,9 +205,7 @@ const collectionInit = () => {
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 
     collectionTypeSubmit.addEventListener('click', function (event) {
-        // shouldNavigateAway;
         handleCollectionTypeSubmit(event);
-
     })
 }
 collectionInit();

@@ -1,7 +1,7 @@
 
 const userAPI = {
 
-    apiURL: 'http://localhost:5000',
+    apiURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
 
     getTest: () => {
 
@@ -53,7 +53,6 @@ const userAPI = {
         }
 
         const json = await res.json();
-        return json;
     }
 }
 
