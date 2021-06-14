@@ -17,7 +17,7 @@ const movieSearchAPI = {
                 },
             })
         } catch (error) {
-            // return undefined;
+            alert('No results!')
             console.log(error);
         }
         const json = await res.json();
@@ -43,7 +43,6 @@ const movieSearchAPI = {
                 },
             })
         } catch (error) {
-            // return undefined;
             console.log(error);
         }
         const json = await res.json();

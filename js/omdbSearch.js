@@ -15,6 +15,10 @@ const omdbSearchInit = () => {
 
         let searchResults = await movieSearchAPI.omdbMultiSearch(searchTerm);
 
+        if (searchResults.status === 500) {
+            alert('No results!')
+        }
+
         sessionStorage.setItem("searchResults", JSON.stringify(searchResults));
 
         let collection = JSON.parse(sessionStorage.searchResults);
