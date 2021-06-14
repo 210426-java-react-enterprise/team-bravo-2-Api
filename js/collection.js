@@ -23,11 +23,8 @@ const collectionInit = () => {
         let collections;
 
         !sessionStorage.collections ? collections = collectionsAPI : collections = JSON.parse(sessionStorage.collections);
-        console.log(collections);
         //RENDER COLLECTION NAMES
         for (const [index, collection] of Object.entries(collections)) {
-            console.log(index, collection)
-
 
             let collectiionTypeHTML = `<div class="card collection-card-container mt-3" style="width: 100%">
                                 <div class="card-body collection-card-body" >
@@ -51,7 +48,6 @@ const collectionInit = () => {
 
                 deleteCollectionButon[i].addEventListener('click', function (event) {
                     event.preventDefault();
-                    console.log('click')
                     collectionAPI.deleteCollection(deleteCollectionButon[i].value)
                     location.reload();
 
@@ -96,13 +92,20 @@ const collectionInit = () => {
                                     </div>`
 
 
-
                 let collectionCard = document.getElementById(`collectionCard${collection.id}`);
                 collectionCard.innerHTML += collectionItemHTML
             }
 
             let deleteItemButton = document.getElementsByClassName('deleteItemButton');
+            let updateItemButton = document.getElementsByClassName('updateItemButton');
             for (let i = 0; i < deleteItemButton.length; i++) {
+
+                updateItemButton[i].addEventListener('click', async function (event) {
+                    event.preventDefault();
+                    sessionStorage.setItem('updateItemId', updateItemButton[i].value)
+                    collectionItemContainer.classList.remove('d-none');
+                    collectionTypeContainer.classList.add('d-none');
+                })
 
                 deleteItemButton[i].addEventListener('click', async function (event) {
                     event.preventDefault();
@@ -143,7 +146,6 @@ const collectionInit = () => {
 
         let mediumId;
         for (const [key, value] of Object.entries(collectionTypes)) {
-            console.log(value.id)
             if (value.mediumType === collectionType.value) {
                 mediumId = value.id;
             }
@@ -171,14 +173,9 @@ const collectionInit = () => {
         if (collection.id) {
 
             sessionStorage.setItem('userCollections', JSON.stringify(collection));
-
-            // collectionTypeContainer.classList.add('d-none');
-            // collectionItemContainer.classList.remove('d-none')
         }
 
         location.reload();
-
-
     }
 
     const validateInputs = () => {
@@ -207,9 +204,7 @@ const collectionInit = () => {
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 
     collectionTypeSubmit.addEventListener('click', function (event) {
-        // shouldNavigateAway;
         handleCollectionTypeSubmit(event);
-
     })
 }
 collectionInit();

@@ -44,8 +44,8 @@ const omdbSearchInit = () => {
         for (let i = 0; i < addAPIItem.length; i++) {
             addAPIItem[i].addEventListener('click', async function (event) {
                 event.preventDefault();
+
                 let movieReturn = await movieSearchAPI.omdbImdbSearch(addAPIItem[i].value)
-                console.log(movieReturn);
                 sessionStorage.setItem('movieReturn', JSON.stringify(movieReturn));
                 let dbMovieReturn = await movieSearchAPI.saveItem(JSON.parse(sessionStorage.movieReturn));
                 sessionStorage.setItem('movieReturn', JSON.stringify(dbMovieReturn));
@@ -65,11 +65,6 @@ const omdbSearchInit = () => {
     }
 
     //EVENT LISTENERS
-
-    // searchItemBack.addEventListener('click', function (event) {
-    //     collectionTypeContainer.classList.remove('d-none');
-    //     searchItemContainer.classList.add('d-none');
-    // })
 
     document.querySelectorAll('input').forEach(element => element.addEventListener("input", validateInputs));
 

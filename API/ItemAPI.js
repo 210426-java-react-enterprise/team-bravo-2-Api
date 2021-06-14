@@ -60,11 +60,11 @@ const itemAPI = {
     },
 
     updateItem: async (data) => {
-
+        console.log('in update', data.movieID)
         let res;
         try {
-            res = await fetch(`${userAPI.apiURL}/movieCollections/updateById`, {
-                method: 'POST',//PUT?????
+            res = await fetch(`${userAPI.apiURL}/movieCollections/update/${data.movieID}`, {
+                method: 'PUT',
                 body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" }
             })

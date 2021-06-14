@@ -32,7 +32,14 @@ const handleCollectionItemSubmit = async (event) => {
 
     let collectionItemData = {};
 
+    console.log('sfsd', parseInt(sessionStorage.updateItemId))
+
     let { id } = JSON.parse(sessionStorage.movieReturn);
+    let itemMethod = 'createItem';
+    if (parseInt(sessionStorage.updateItemId) > 0) {
+        id = JSON.parse(sessionStorage.updateItemId);
+        itemMethod = 'updateItem';
+    }
 
     collectionItemData.collectionInfoId = sessionStorage.collectionId;
     collectionItemData.movieID = id;
@@ -42,7 +49,13 @@ const handleCollectionItemSubmit = async (event) => {
     collectionItemData.tradable = collectionItemTradeable.checked ? collectionItemTradeable.value = 1 : collectionItemOwned.value = 0;
     collectionItemData.userDescrip = collectionItemUserComment.value; //must be trim if optional input?
 
-    itemAPI.createItem(collectionItemData);
+    if (JSON.parse(sessionStorage.updateItemId) > 0) {
+        itemAPI.updateItem(collectionItemData);
+    } else {
+        itemAPI.createItem(collectionItemData);
+    }
+
+    sessionStorage.setItem('updateItemId', 0);
 
     location.reload();
 }
