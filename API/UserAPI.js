@@ -3,17 +3,7 @@ const userAPI = {
 
     apiURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
 
-    getTest: () => {
-
-
-
-        // fetch(`${URL}/accounts/test`)
-        //    .then((res) => res.json())
-        // .then((res) => JSON.parse(res))
-        //    .then((data) => console.log(data));
-        //    // .catch(error => console.log(error))
-
-    },
+    localURL: 'http://localhost:5000',
 
     loginUser: async (data) => {
         let res;

@@ -23,6 +23,7 @@ const collectionInit = () => {
         let collections;
 
         !sessionStorage.collections ? collections = collectionsAPI : collections = JSON.parse(sessionStorage.collections);
+        console.log('sfds', collections)
         //RENDER COLLECTION NAMES
         for (const [index, collection] of Object.entries(collections)) {
 
@@ -176,7 +177,7 @@ const collectionInit = () => {
             sessionStorage.setItem('userCollections', JSON.stringify(collection));
         }
 
-        location.reload();
+        // location.reload();
     }
 
     const validateInputs = () => {

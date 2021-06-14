@@ -2,6 +2,8 @@ const movieSearchAPI = {
 
     apiURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
 
+    localURL: 'http://localhost:5000',
+
 
     omdbMultiSearch: async (data) => {
         let res;

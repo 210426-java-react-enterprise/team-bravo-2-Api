@@ -2,6 +2,7 @@ const itemAPI = {
 
     apiURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
 
+    localURL: 'http://localhost:5000',
 
     createItem: async (data) => {
         console.log(data);
@@ -42,7 +43,7 @@ const itemAPI = {
     getItem: async (data) => {
         let res;
         try {
-            res = await fetch('${userAPI.apiURL}/movieCollections/get-by-id', {
+            res = await fetch(`${userAPI.apiURL}/movieCollections/get-by-id`, {
 
                 method: 'GET',
                 body: JSON.stringify(data),

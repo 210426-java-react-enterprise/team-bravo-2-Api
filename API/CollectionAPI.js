@@ -1,6 +1,8 @@
 const collectionAPI = {
 
-    localURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
+    apiURL: 'http://p2api-env.eba-mrmas8kr.us-east-1.elasticbeanstalk.com',
+
+    localURL: 'http://localhost:5000',
 
     JWT: sessionStorage.JWT,
 
@@ -19,7 +21,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collectionType/get-all`);
+            res = await fetch(`${collectionAPI.apiURL}/collectionType/get-all`);
         } catch (error) {
             console.log(error);
         }
@@ -32,7 +34,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collection/get-info-by-id`, {
+            res = await fetch(`${collectionAPI.apiURL}/collection/get-info-by-id`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +59,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collection/save`, {
+            res = await fetch(`${collectionAPI.apiURL}/collection/save`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: { 'Content-Type': 'application/json' }
@@ -77,7 +79,7 @@ const collectionAPI = {
         let res;
 
         try {
-            res = await fetch(`${collectionAPI.localURL}/collection/delete/${data}`, {
+            res = await fetch(`${collectionAPI.apiURL}/collection/delete/${data}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' }
             });
