@@ -1,4 +1,4 @@
-# CollectExchange
+# Collect/Exchange
 
 Ever have an issue trying to organize your collections, or track what collectibles/collections you own without having to dig through and possibly damage your most valuable items?  Or, maybe you are trying to get the word out on a rare item you would like to get rid of or trade? Then our collection management system, CollectExchange, will fill that gap! 
 
